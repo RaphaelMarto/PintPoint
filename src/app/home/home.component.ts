@@ -9,14 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent {
   Beers: any[] = [];
   constructor(private http: HttpClient) {}
-  ngOnInit(): void {
-    this.http.get<any>('https://localhost:7136/api/Beers').subscribe({
-      next: (data) => {
-        this.Beers = data;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
+  // ngOnInit(): void {
+  //   this.http.get<any>('https://localhost:7136/api/Beers').subscribe({
+  //     next: (data) => {
+  //       this.Beers = data;
+  //     },
+  //     error: (error) => {
+  //       console.log(error);
+  //     },
+  //   });
+  // }
 }

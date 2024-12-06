@@ -2,7 +2,12 @@
 body{
     margin: 0;
     height: 100vh;
-    background-color: var(--surface-a);
+    background-color: #2a323d; //#0d1117 #2c3440
     font-family: var(--font-family);
-    color: var(--text-color);
+    color: #9ab;
+}
+
+:root {
+    --boutton-color-y: #f1c40f
+    --boutton-color-y-hover: #c27c0e
 }

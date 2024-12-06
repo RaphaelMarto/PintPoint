@@ -1,0 +1,72 @@
+::ng-deep .p-menubar {
+  background-color: #0d1117;
+  border-color: #0d1117;
+  border-radius: 0;
+}
+
+::ng-deep .p-menuitem .p-menuitem-text,
+::ng-deep .p-menuitem .p-menuitem-icon{
+    color:#9ab
+}
+
+::ng-deep .p-menuitem-content:hover{
+     background: none;
+}
+
+::ng-deep .p-menuitem:hover .p-menuitem-text,
+::ng-deep .p-menuitem:hover .p-menuitem-icon {
+  color: #d3a902; /* Replace with your desired color */
+}
+
+.signIn {
+  margin-left: 5px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  cursor: pointer;
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.title h1{
+    color: #fff;
+}
+
+.title:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo {
+  border-radius: 50%;
+  margin-right: 5px;
+  width: 50px;
+}
+
+.button-new {
+  background: #d3a902;
+  border-color: #d3a902;
+}
+
+.button-new:hover {
+  background: #e4b90e;
+  border-color: #e4b90e;
+}
+
+.button-new-outline {
+  background: transparent;
+  color: #d3a902;
+  border-color: #d3a902; //f1c40f
+}
+
+.button-new-outline:hover {
+  background: #00000015;
+  color: #f1c40f;
+  border-color: #f1c40f;
+}

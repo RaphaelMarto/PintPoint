@@ -1,0 +1,42 @@
+<p-menubar
+  [autoHide]="true"
+  [autoHideDelay]="0"
+  [model]="items"
+>
+  <ng-template pTemplate="start">
+    <a class="title logo-container" routerLink="Home">
+      <img class="logo" src="assets/logo.jpg" alt="logo" />
+      <h1>PintPoint</h1>
+    </a>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-2">
+      @if(!this.connected){
+      <button pButton class="button-new" size="small" (onClick)="ShowLog()">
+        Sign in
+      </button>
+      <button
+        class="signIn"
+        pButton
+        class="button-new-outline"
+        [outlined]="true"
+        size="small"
+        routerLink="Pages/Auth/Register"
+      >
+        Register
+      </button>
+      } @else {
+      <p-button
+        icon="pi pi-user"
+        [rounded]="true"
+        [outlined]="true"
+        (onClick)="logout()"
+      />
+      }
+    </div>
+  </ng-template>
+</p-menubar>
+
+<!-- @if(showLogin){
+    <app-sign-in/>
+} -->
