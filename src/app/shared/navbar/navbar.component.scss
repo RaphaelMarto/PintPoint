@@ -9,13 +9,13 @@
     color:#9ab
 }
 
-::ng-deep .p-menuitem-content:hover{
-     background: none;
-}
-
 ::ng-deep .p-menuitem:hover .p-menuitem-text,
 ::ng-deep .p-menuitem:hover .p-menuitem-icon {
-  color: #d3a902; /* Replace with your desired color */
+  color: #d3a902;
+}
+
+::ng-deep .p-menuitem-content{
+    background: none;
 }
 
 .signIn {
@@ -50,13 +50,13 @@
 }
 
 .button-new {
-  background: #d3a902;
-  border-color: #d3a902;
+  background: var(--boutton-color-y);
+  border-color: var(--boutton-color-y);
 }
 
 .button-new:hover {
-  background: #e4b90e;
-  border-color: #e4b90e;
+  background: var(--boutton-color-y-hover);
+  border-color: var(--boutton-color-y-hover);
 }
 
 .button-new-outline {

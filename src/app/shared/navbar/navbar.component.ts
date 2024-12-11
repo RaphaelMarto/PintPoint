@@ -31,7 +31,7 @@ export class NavbarComponent {
     {
       label: 'Classement',
       icon: 'pi pi-book',
-      routerLink: 'Pages/Library',
+      routerLink: 'Pages/BeerRanking',
     },
   ];
 

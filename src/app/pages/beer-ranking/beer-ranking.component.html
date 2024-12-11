@@ -1,0 +1,184 @@
+<p-dataView
+  [value]="products"
+  [layout]="layout"
+  class="dataView"
+  [rows]="2"
+  [paginator]="true"
+  [totalRecords]="totalRecords"
+  [lazy]="true"
+  (onLazyLoad)="next($event)"
+  [sortField]="sortField"
+  [sortOrder]="sortOrder"
+>
+  <ng-template pTemplate="header">
+    <div class="flex justify-content-between">
+      <div class="flex flex-column md:flex-row">
+        <p-dropdown
+          [options]="sortOptions"
+          placeholder="Classer par"
+          (onChange)="onSortChange($event)"
+          styleClass="mb-2 md:mb-0 mr-2"
+        />
+        <p-iconField iconPosition="left" Class="mb-2 md:mb-0 mr-2">
+          <p-inputIcon styleClass="pi pi-search" />
+          <input
+            type="text"
+            id="searchInput"
+            pInputText
+            placeholder="Rechercher"
+            [formControl]="searchControl"
+          />
+        </p-iconField>
+        <button
+          label="Ajouter"
+          pButton
+          icon="pi pi-plus"
+          size="small"
+          class="flex-1 button-new"
+          (onClick)="CreateNew()"
+        ></button>
+      </div>
+      <div>
+        <p-dataViewLayoutOptions />
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="list" let-products>
+    <div class="grid grid-nogutter">
+      <div
+        class="col-12"
+        *ngFor="let item of products; let first = first; let index = index"
+        class="col-12 color-text"
+      >
+        <div
+          class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
+          [ngClass]="{ 'border-top-1': !first }"
+        >
+          @if(loading)
+          {
+          <p-skeleton
+            styleClass="w-9 sm:w-16rem xl:w-10rem h-6rem block xl:block mx-auto border-round"
+          />
+          <div
+            class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4"
+          >
+            <div
+              class="flex flex-column align-items-center sm:align-items-start gap-3"
+            >
+              <p-skeleton styleClass="w-8rem border-round h-2rem" />
+              <p-skeleton styleClass="w-6rem border-round h-1rem" />
+              <div class="flex align-items-center gap-3">
+                <p-skeleton styleClass="w-6rem border-round h-1rem" />
+              </div>
+            </div>
+          </div>
+          } 
+          @if(!loading)
+          {
+          <div class="md:w-10rem relative">
+            <img
+              class="block xl:block mx-auto border-round w-full"
+              [src]="item.pictureUrl"
+              [alt]="item.name"
+            />
+          </div>
+          <div
+            class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4"
+          >
+            <div
+              class="flex flex-row md:flex-column justify-content-between align-items-start gap-2"
+            >
+              <div>
+                <div class="text-lg font-medium text-900 mt-2">
+                  <a class="item-name" routerLink="/product/{{ item.id }}"
+                    >{{ index + 1 + offset }}. {{ item.name }}
+                    {{ item.capacity }}cl
+                    <img
+                      [src]="item.flagUrl"
+                      height="20px"
+                      width="25px"
+                      [alt]="item.countryName"
+                      [title]="item.countryName"
+                  /></a>
+                </div>
+                <span class="font-medium text-secondary text-sm">{{
+                  item.beerTypeName
+                }}</span>
+              </div>
+              <div style="border-radius: 30px">
+                <div
+                  class="flex align-items-center gap-2 justify-content-center py-1"
+                >
+                  <p-rating
+                    [(ngModel)]="item.rating"
+                    [cancel]="false"
+                    [stars]="5"
+                    [readonly]="true"
+                  />
+                </div>
+                <span class="font-semibold color-text">{{
+                  item.price | currency : "EUR"
+                }}</span>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="grid" let-products>
+    <div class="grid grid-nogutter">
+      <div
+        class="col-6 xl:col-3 p-2 color-text"
+        *ngFor="let product of products; let index = index"
+      >
+        <a class="card-link" routerLink="/product/{{ product.id }}">
+          <div
+            class="p-4 border-1 background-grid border-round flex flex-column"
+          >
+            <div class="flex justify-content-center border-round p-3">
+              <div class="relative mx-auto">
+                <img
+                  class="block xl:block mx-auto border-round w-full"
+                  [src]="product.pictureUrl"
+                  alt="bamboo-watch"
+                />
+              </div>
+            </div>
+            <div class="pt-4">
+              <div
+                class="flex flex-row justify-content-between align-items-start gap-2"
+              >
+                <div>
+                  <div class="text-lg font-medium text-900 mt-1 item-name">
+                    {{ index + 1 }}. {{ product.name }} {{ product.capacity }}cl
+                    <img [src]="product.flagUrl" height="20px" width="25px" />
+                  </div>
+                  <span class="font-medium text-secondary text-sm">{{
+                    product.beerTypeName
+                  }}</span>
+                </div>
+              </div>
+              <div class="flex flex-column gap-4 mt-4">
+                <div style="border-radius: 30px">
+                  <div class="flex gap-2 py-1">
+                    <p-rating
+                      [(ngModel)]="product.rating"
+                      [cancel]="false"
+                      [stars]="5"
+                      [readonly]="true"
+                    />
+                  </div>
+                </div>
+                <span class="text-2xl font-semibold">{{
+                  product.price | currency : "EUR"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

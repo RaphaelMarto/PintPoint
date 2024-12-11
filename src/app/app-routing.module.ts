@@ -9,6 +9,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'Home', component: HomeComponent },
+  {
+    path: 'Pages',
+    loadChildren: () =>
+      import('./pages/pages.module').then((m) => m.PagesModule),
+  }
 ];
 
 @NgModule({

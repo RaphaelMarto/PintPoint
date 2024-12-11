@@ -1,0 +1,81 @@
+::ng-deep .p-selectbutton .p-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+::ng-deep .p-selectbutton .p-button.p-highlight {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #9ab;
+}
+
+::ng-deep .p-selectbutton .p-button {
+  background: none;
+  color: #678;
+  border-color: transparent;
+  border-radius: 5px;
+  margin-right: 3px;
+}
+
+.dataView {
+  width: 80%;
+  display: block;
+  margin: 20px auto 20px auto;
+}
+
+::ng-deep .p-dataview .p-dataview-content {
+  background-color: var(--background-color-pp);
+}
+
+::ng-deep .p-dataview .p-dataview-content .color-text{
+  color: #9ab;
+}
+
+.color-text{
+  color: #9ab;
+}
+
+::ng-deep .p-dataview .p-dataview-header {
+  background-color: var(--background-color-pp);
+  border-color: #9ab;
+  padding: 10px;
+}
+
+.item-name{
+  color: #fff !important;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.item-name img{
+  margin-left: 5px;
+}
+
+.background-grid{
+  background-color: #0d1117;
+  border-color: #0d1117;
+}
+
+
+::ng-deep .p-rating-icon-active{
+  color: #d3a902;
+}
+
+.card-link{
+  text-decoration: none;
+  color: inherit;
+}
+
+::ng-deep .p-paginator{
+  background-color: var(--background-color-pp);
+  color: #9ab;
+}
+
+.button-new {
+  background: #d3a902;
+  border-color: #d3a902;
+}
+
+.button-new:hover {
+  background: var(--boutton-color-y-hover);
+  border-color: var(--boutton-color-y-hover);
+}
