@@ -35,7 +35,7 @@
           icon="pi pi-plus"
           size="small"
           class="flex-1 button-new"
-          (onClick)="CreateNew()"
+          (click)="CreateNew()"
         ></button>
       </div>
       <div>
@@ -45,17 +45,16 @@
   </ng-template>
   <ng-template pTemplate="list" let-products>
     <div class="grid grid-nogutter">
+      @if(loading) {
       <div
         class="col-12"
-        *ngFor="let item of products; let first = first; let index = index"
+        *ngFor="let item of counterArray(4); let first = first;"
         class="col-12 color-text"
       >
         <div
           class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
           [ngClass]="{ 'border-top-1': !first }"
         >
-          @if(loading)
-          {
           <p-skeleton
             styleClass="w-9 sm:w-16rem xl:w-10rem h-6rem block xl:block mx-auto border-round"
           />
@@ -72,14 +71,28 @@
               </div>
             </div>
           </div>
-          } 
-          @if(!loading)
-          {
+        </div>
+      </div>
+      }
+      <div
+        class="col-12"
+        *ngFor="let item of products; let first = first; let index = index"
+        class="col-12 color-text"
+      >
+        <div
+          class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
+          [ngClass]="{ 'border-top-1': !first }"
+        >
+          @if(!loading) {
           <div class="md:w-10rem relative">
             <img
               class="block xl:block mx-auto border-round w-full"
-              [src]="item.pictureUrl"
+              [src]="
+                item.pictureUrl == '' ? 'assets/logo.jpg' : item.pictureUrl
+              "
               [alt]="item.name"
+              width="150px"
+              height="150px"
             />
           </div>
           <div
@@ -141,8 +154,14 @@
               <div class="relative mx-auto">
                 <img
                   class="block xl:block mx-auto border-round w-full"
-                  [src]="product.pictureUrl"
-                  alt="bamboo-watch"
+                  [src]="
+                    product.pictureUrl == ''
+                      ? 'assets/logo.jpg'
+                      : product.pictureUrl
+                  "
+                  [alt]="product.name"
+                  width="250px"
+                  height="150px"
                 />
               </div>
             </div>

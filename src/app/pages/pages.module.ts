@@ -14,9 +14,14 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { SkeletonModule } from 'primeng/skeleton';
+import { AddBeerComponent } from './beer-ranking/components/add-beer/add-beer.component';
+import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { AddBreweryComponent } from './beer-ranking/components/add-brewery/add-brewery.component';
 
 @NgModule({
-  declarations: [BeerRankingComponent],
+  declarations: [BeerRankingComponent, AddBeerComponent, AddBreweryComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -31,7 +36,10 @@ import { SkeletonModule } from 'primeng/skeleton';
     IconFieldModule,
     InputIconModule,
     InputTextModule,
-    SkeletonModule
+    SkeletonModule,
+    DialogModule,
+    InputNumberModule,
+    InputTextareaModule
 ],
 })
 export class PagesModule {}

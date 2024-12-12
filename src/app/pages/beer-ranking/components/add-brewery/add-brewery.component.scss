@@ -1,0 +1,41 @@
+.button-new {
+  background: #d3a902;
+  border-color: #d3a902;
+}
+
+.button-new:hover {
+  background: var(--boutton-color-y-hover);
+  border-color: var(--boutton-color-y-hover);
+}
+
+.button-new-outline {
+  background: transparent;
+  color: #d3a902;
+  border-color: #d3a902; //f1c40f
+}
+
+.button-new-outline:hover {
+  background: #00000015;
+  color: #f1c40f;
+  border-color: #f1c40f;
+}
+
+::ng-deep .p-dialog-content{
+    background-color: #2a323d;
+}
+
+::ng-deep .p-dialog-header{
+    background-color: #2a323d;
+}
+
+::ng-deep .p-dialog-footer{
+    background-color: #2a323d;
+}
+
+label{
+    color: #9ab
+}
+
+.title-color{
+    color: #9ab
+}

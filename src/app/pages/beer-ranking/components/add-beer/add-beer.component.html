@@ -1,0 +1,163 @@
+<div class="flex justify-content-center">
+  <form
+    [formGroup]="beerForm"
+    [style]="{ width: '450px' }"
+    class="p-fluid mb-4"
+  >
+    <div class="border-bottom-1">
+      <h1>Ajouter une bière</h1>
+    </div>
+    <div class="field">
+      <label for="name">Name</label>
+      <input pInputText id="name" formControlName="name" required autofocus />
+      <small class="p-error" *ngIf="submitted && beerForm.get('name')?.invalid">
+        Le Nom est requis.
+      </small>
+    </div>
+    <div class="field">
+      <label for="genre">Genre</label>
+      <p-dropdown
+        formControlName="idBeerType"
+        inputId="genre"
+        [options]="genres"
+        placeholder="Selectioner un genre"
+        [checkmark]="true"
+        [showClear]="true"
+        optionLabel="name"
+        optionValue="id"
+        [filter]="true"
+        filterBy="name"
+        appendTo="body"
+      />
+      <small
+        class="p-error"
+        *ngIf="submitted && beerForm.get('idBeerType')?.invalid"
+      >
+        Genre est requis.
+      </small>
+    </div>
+    <div class="field">
+      <label for="Brewery">Fabricant</label>
+      <div class="select-and-Button">
+        <p-dropdown
+          formControlName="idBrewery"
+          inputId="Brewery"
+          [options]="breweries"
+          placeholder="Selectioner un fabricant"
+          [checkmark]="true"
+          [showClear]="true"
+          optionLabel="name"
+          optionValue="id"
+          [filter]="true"
+          filterBy="name"
+          class="flex-grow"
+          appendTo="body"
+        />
+        <button
+          icon="pi pi-plus"
+          pButton
+          class="button-new"
+          (click)="updateShowCreate(true)"
+        ></button>
+      </div>
+      <small
+        class="p-error"
+        *ngIf="submitted && beerForm.get('idBrewery')?.invalid"
+      >
+        Fabricant est requis.
+      </small>
+    </div>
+    <div class="select-and-Button">
+      <div class="col-6 p-0">
+        <label for="capacity">Quantité (cl)</label>
+        <p-inputNumber inputId="capacity" formControlName="capacity" required />
+        <small
+          class="p-error"
+          *ngIf="submitted && beerForm.get('capacity')?.invalid"
+        >
+          La quantité est requise.
+        </small>
+      </div>
+      <div class="col-6">
+        <label for="price">Prix (€)</label>
+        <p-inputNumber
+          inputId="price"
+          formControlName="price"
+          [maxFractionDigits]="2"
+          required
+        />
+        <small
+          class="p-error"
+          *ngIf="submitted && beerForm.get('price')?.invalid"
+        >
+          Le prix est requis.
+        </small>
+      </div>
+    </div>
+    <div class="field">
+      <label for="alcoholPercent">Pourcentage d'alcool (%)</label>
+      <p-inputNumber
+        inputId="alcoholPercent"
+        formControlName="alcoholPercent"
+        [maxFractionDigits]="2"
+        required
+      />
+      <small
+        class="p-error"
+        *ngIf="submitted && beerForm.get('alcoholPercent')?.invalid"
+      >
+        Le pourcentage est requis.
+      </small>
+    </div>
+    <div class="field">
+      <label for="pictureUrl">Photo</label>
+      <input pInputText id="pictureUrl" formControlName="pictureUrl" />
+    </div>
+    <div class="field">
+      <label for="description">Description</label>
+      <textarea
+        rows="5"
+        cols="30"
+        pInputTextarea
+        id="description"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div class="flex justify-content-end mt-4">
+      <button
+        label="Cancel"
+        pButton
+        [outlined]="true"
+        (click)="Cancel()"
+        class="mr-2 button-new-outline col-3"
+      ></button>
+      <button
+        pButton
+        label="Save"
+        class="button-new col-3 h-3rem"
+        (click)="onSubmit()"
+      ></button>
+    </div>
+    <input type="hidden" id="rating" name="rating" formControlName="rating" />
+    <input
+      type="hidden"
+      id="createdAt"
+      name="createdAt"
+      formControlName="createdAt"
+    />
+    <input
+      type="hidden"
+      id="updatedAt"
+      name="updatedAt"
+      formControlName="updatedAt"
+    />
+  </form>
+</div>
+
+@if(showCreateBrewery){
+<app-add-brewery
+  (showOut)="updateShowCreate($event)"
+  [showCreateBrewery]="showCreateBrewery"
+  (refreshBrewery)="getRefreshData()"
+/>
+}

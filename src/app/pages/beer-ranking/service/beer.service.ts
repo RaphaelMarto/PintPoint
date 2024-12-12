@@ -2,8 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { config } from '../../../config/configuration';
 import { Observable } from 'rxjs';
-import { OffsetResultBeer } from '../../../models/OffsetResultBeer';
-import { BeerCompleteInfo } from '../../../models/beerCompleteInfo.model';
+import { IBeerType } from '../../../interface/iBeerType';
+import { IBrewery } from '../../../interface/iBrewery';
+import { OffsetResultBeer } from '../../../interface/iOffsetResultBeer';
+import { BeerCompleteInfo } from '../../../interface/ibeerCompleteInfo';
+import { IPostBeer } from '../../../interface/iPostBeer';
+import { ICountry } from '../../../interface/iCountry';
+import { IPostBrewery } from '../../../interface/iPostBrewery';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +23,25 @@ export class BeerService {
 
   getBeerById(id : string) : Observable<BeerCompleteInfo> {
     return this.http.get<BeerCompleteInfo>(config.API_URL + 'Beers/' + id)
+  }
+
+  getTypeBeers() : Observable<IBeerType[]> {
+    return this.http.get<IBeerType[]>(config.API_URL + 'BeerType')
+  }
+
+  getBreweries() : Observable<IBrewery[]> {
+    return this.http.get<IBrewery[]>(config.API_URL + 'Breweries')
+  }
+
+  postBeer(beer : IPostBeer) : Observable<boolean> {
+    return this.http.post<boolean>(config.API_URL + 'Beers', beer)
+  }
+
+  getCountries() : Observable<ICountry[]> {
+    return this.http.get<ICountry[]>(config.API_URL + 'Countries')
+  }
+
+  postBrewery(brewery : IPostBrewery) : Observable<boolean> {
+    return this.http.post<boolean>(config.API_URL + 'Breweries', brewery)
   }
 }

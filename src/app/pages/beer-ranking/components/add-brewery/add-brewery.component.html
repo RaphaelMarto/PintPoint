@@ -1,0 +1,77 @@
+<p-dialog
+  [modal]="true"
+  [(visible)]="showCreateBrewery"
+  [style]="{ width: '450px' }"
+  styleClass="p-fluid background-pop"
+  (onHide)="onHide()"
+  [closeOnEscape]="true"
+>
+  <ng-template pTemplate="header">
+    <h2 class="margin-0 title-color">Nouveau Producteur</h2>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <form [formGroup]="breweryForm">
+      <div class="field">
+        <label for="name">Name</label>
+        <input pInputText id="name" formControlName="name" required autofocus />
+        <small
+          class="p-error"
+          *ngIf="submitted && breweryForm.get('name')?.invalid"
+        >
+          Le nom est requis.
+        </small>
+      </div>
+      <div class="field">
+        <label for="city">Ville</label>
+        <input pInputText id="city" formControlName="city" required autofocus />
+        <small
+          class="p-error"
+          *ngIf="submitted && breweryForm.get('city')?.invalid"
+        >
+          La ville est requise.
+        </small>
+      </div>
+      <div class="field">
+        <label for="completeAddress">Addresse Complète</label>
+        <input pInputText id="completeAddress" formControlName="completeAddress" />
+        <small
+          class="p-error"
+          *ngIf="submitted && breweryForm.get('isbn')?.invalid"
+        >
+          L'addresse est requise.
+        </small>
+      </div>
+      <div class="field">
+        <label for="country">Pays</label>
+        <p-dropdown
+          formControlName="idCountry"
+          inputId="country"
+          [options]="countries"
+          placeholder="Choissir un pays"
+          [checkmark]="true"
+          [showClear]="true"
+          optionLabel="name"
+          optionValue="id"
+          [filter]="true"
+          filterBy="name"
+          appendTo="body"
+        />
+        <small
+          class="p-error"
+          *ngIf="submitted && breweryForm.get('idCountry')?.invalid"
+        >
+          Le pays est requis.
+        </small>
+      </div>
+      </form>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button
+      label="Cancel"
+      pButton
+      class="button-new-outline mr-2"
+      (click)="Cancel()"
+    ></button>
+    <button pButton label="Save" class="button-new" (click)="onSubmit()"></button>
+  </ng-template>
+</p-dialog>

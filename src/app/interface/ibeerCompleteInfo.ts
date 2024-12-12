@@ -1,4 +1,4 @@
-import { Beer } from './beer.model';
+import { Beer } from './ibeer';
 
 export interface BeerCompleteInfo extends Beer {
   description: string;

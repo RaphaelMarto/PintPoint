@@ -1,0 +1,45 @@
+.select-and-Button {
+  display: flex;
+  //   justify-content: space-between;
+  align-items: center;
+}
+
+.field {
+  margin-top: 1rem;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.button-new {
+  background: #d3a902;
+  border-color: #d3a902;
+}
+
+.button-new:hover {
+  background: var(--boutton-color-y-hover);
+  border-color: var(--boutton-color-y-hover);
+}
+
+.button-new-outline {
+  background: transparent;
+  color: #d3a902;
+  border-color: #d3a902; //f1c40f
+}
+
+.button-new-outline:hover {
+  background: #00000015;
+  color: #f1c40f;
+  border-color: #f1c40f;
+}

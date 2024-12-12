@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { Beer } from '../../models/beer.model';
+import { Beer } from '../../interface/ibeer';
 import { BeerService } from './service/beer.service';
 import { SelectItem } from 'primeng/api';
 import { DataViewLazyLoadEvent } from 'primeng/dataview';
-import { OffsetResultBeer } from '../../models/OffsetResultBeer';
+
 import { debounceTime } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { OffsetResultBeer } from '../../interface/iOffsetResultBeer';
 
 @Component({
   selector: 'app-beer-ranking',
@@ -27,7 +29,7 @@ export class BeerRankingComponent {
   order: string = 'ASC';
   offset: number = 0;
 
-  constructor(private beerService: BeerService) {}
+  constructor(private beerService: BeerService, private router: Router) {}
 
   ngOnInit(): void {
     this.sortOptions = [
@@ -101,6 +103,10 @@ export class BeerRankingComponent {
   }
 
   CreateNew(): void {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['Pages/beer/add']);
+  }
+
+  counterArray(n: number): any[] {
+    return Array(n);
   }
 }
