@@ -1,10 +1,11 @@
-import { Component, Input, output } from '@angular/core';
+import { Component } from '@angular/core';
 import { fBeerAddForm } from '../../../../models/fBeerForm';
 import { Router } from '@angular/router';
-import { BeerService } from '../../service/beer.service';
+import { BeerService } from '../../../service/beer.service';
 import { IBeerType } from '../../../../interface/iBeerType';
 import { IBrewery } from '../../../../interface/iBrewery';
 import { IPostBeer } from '../../../../interface/iPostBeer';
+import { BreweryService } from '../../../service/brewery.service';
 
 @Component({
   selector: 'app-add-beer',
@@ -19,7 +20,11 @@ export class AddBeerComponent {
   submitted: boolean = false;
   showCreateBrewery: boolean = false;
 
-  constructor(private router: Router, private beerService: BeerService) {}
+  constructor(
+    private router: Router,
+    private beerService: BeerService,
+    private breweryService: BreweryService,
+  ) {}
 
   ngOnInit(): void {
     this.loadGenres();
@@ -34,7 +39,7 @@ export class AddBeerComponent {
   }
 
   loadBreweries(): void {
-    this.beerService.getBreweries().subscribe({
+    this.breweryService.getBreweries().subscribe({
       next: (data: IBrewery[]) => (this.breweries = data),
       error: (err: any) => console.log(err),
     });
@@ -65,7 +70,7 @@ export class AddBeerComponent {
   }
 
   getRefreshData(): void {
-    console.log('refresh')
+    console.log('refresh');
     this.loadBreweries();
   }
 }

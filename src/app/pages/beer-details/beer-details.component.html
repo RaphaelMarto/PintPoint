@@ -1,0 +1,79 @@
+@if(beer){
+<div class="flex flex-row beer-details">
+  <div class="flex flex-column">
+    <div class="beer-image">
+      <img
+        [src]="beer.pictureUrl == '' ? 'assets/logo.jpg' : beer.pictureUrl"
+        alt="Beer Image"
+        class="mt-4 border-round"
+      />
+    </div>
+    <div
+      class="beer-info flex-1 flex flex-column mt-2 border-round-sm text-center"
+    >
+      <span class="border-bottom-1 pb-3 pt-3"
+        ><strong>Type de bière</strong>: {{ beer.beerTypeName }}</span
+      >
+      <span class="border-bottom-1 pb-3 pt-3"
+        ><strong>Producteur</strong>: {{ beer.breweryName }}</span
+      >
+      <span class="border-bottom-1 pb-3 pt-3"
+        ><strong>Pays</strong>: {{ beer.countryName }}
+        <img [src]="beer.flagUrl" alt="Country Flag" width="25px" height="20px"
+      /></span>
+      <span class="border-bottom-1 pb-3 pt-3"
+        ><strong>Pourcentage d'alcool</strong>: {{ beer.alcoholPercent }}%</span
+      >
+      <span class="border-bottom-1 pb-3 pt-3"
+        ><strong>Quantité</strong>: {{ beer.capacity }}</span
+      >
+      <span class="pb-3 pt-3"
+        ><strong>Prix</strong>: {{ beer.price | currency : "EUR" }}</span
+      >
+    </div>
+  </div>
+  <div class="flex flex-column w-full ml-4">
+    <div class="w-full ml-4">
+      <h1 class="mb-2 color-title">
+        {{ beer.name }} <span class="small-text">depuis les années 80</span>
+      </h1>
+    </div>
+    <div class="flex flex-row">
+      <div class="ml-4 col-8 mr-4">
+        <h4 class="border-bottom-1 pb-1">Description</h4>
+        <p>
+          {{ beer.description }} writing something so i can see what i looks
+          like in the page nothign important tho and you could bebzdgy dzgaydg
+          ayzgd ayzdgya d dzgayz da zdyazgdyag dzy adzyagzd
+        </p>
+      </div>
+      <div class="ml-4">
+        <div>
+          <p
+            class="flex align-items-center flex-column background-side p-2 border-bottom-1 border-round-sm"
+          >
+            <span class="pb-1">Votre Note</span>
+            <p-rating [(ngModel)]="beer.rating" [cancel]="false" [stars]="5" />
+          </p>
+          <h4 class="border-bottom-1 pb-1">Notes</h4>
+          <p-chart
+            type="bar"
+            [data]="chartData"
+            [options]="chartOptions"
+            class="chart-size"
+            width="175"
+            height="100"
+            [responsive]="true"
+          ></p-chart>
+          <div class="mt-2">
+            <h4 class="border-bottom-1 pb-1">Moyenne</h4>
+            <p class="font-bold text-2xl text-center">
+              {{ beer.rating }} <i class="color-star pi pi-star-fill"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

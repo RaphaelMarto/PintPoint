@@ -1,0 +1,48 @@
+.beer-details {
+  width: 80%;
+  margin: 20px auto 20px auto;
+}
+
+.beer-image img {
+  width: 230px;
+  height: 345px;
+  /* Add your desired styles for the image */
+}
+
+.color-title {
+  color: #fff;
+}
+
+.background-side {
+  background-color: #678;
+  color: #bcd;
+  border-color: rgb(122, 112, 99);
+}
+
+::ng-deep .p-rating-icon-active {
+  color: #d3a902;
+}
+
+.small-text {
+  font-size: 14px;
+  color: #9ab;
+}
+
+::ng-deep .chart-size div {
+  display: block;
+  width: 175px;
+  height: 100px;
+}
+
+.color-star {
+  color: #d3a902;
+}
+
+.beer-info{
+    background-color: #5e6d7d;
+    color: #bcd;
+}
+
+.beer-info span{
+    border-color: rgb(122, 112, 99);
+}

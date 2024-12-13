@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Beer } from '../../interface/ibeer';
-import { BeerService } from './service/beer.service';
+import { BeerService } from '../service/beer.service';
 import { SelectItem } from 'primeng/api';
 import { DataViewLazyLoadEvent } from 'primeng/dataview';
 
@@ -103,7 +103,7 @@ export class BeerRankingComponent {
   }
 
   CreateNew(): void {
-    this.router.navigate(['Pages/beer/add']);
+    this.router.navigate(['Pages/Beer/Add']);
   }
 
   counterArray(n: number): any[] {
