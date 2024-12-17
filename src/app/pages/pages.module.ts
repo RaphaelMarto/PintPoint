@@ -21,9 +21,13 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AddBreweryComponent } from './beer-ranking/components/add-brewery/add-brewery.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
 import { ChartModule } from 'primeng/chart';
+import { UsersRatingComponent } from './beer-details/components/users-rating/users-rating.component';
+import { PanelModule } from 'primeng/panel';
+import { AvatarModule } from 'primeng/avatar';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
-  declarations: [BeerRankingComponent, AddBeerComponent, AddBreweryComponent, BeerDetailsComponent],
+  declarations: [BeerRankingComponent, AddBeerComponent, AddBreweryComponent, BeerDetailsComponent, UsersRatingComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -42,7 +46,10 @@ import { ChartModule } from 'primeng/chart';
     DialogModule,
     InputNumberModule,
     InputTextareaModule,
-    ChartModule
+    ChartModule,
+    PanelModule,
+    AvatarModule,
+    PipesModule
 ],
 })
 export class PagesModule {}

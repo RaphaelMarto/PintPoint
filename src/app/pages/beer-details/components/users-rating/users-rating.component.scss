@@ -1,0 +1,43 @@
+::ng-deep .p-panel-header {
+  background: #2a323d;
+  border-color: #2a323d;
+  color: #bcd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+::ng-deep .p-panel-content {
+  background: #2a323d;
+  border-color: #2a323d;
+  color: #9ab;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+::ng-deep .p-panel-footer {
+  background: #2a323d;
+  border-color: #2a323d;
+  color: #9ab;
+//   border-bottom-color: #9ab;
+  border-radius: 0;
+  padding-top:0;
+}
+
+.p-text-secondary {
+  font-size: 14px;
+}
+
+::ng-deep .button-size {
+  width: 26px;
+  height: 26px;
+  color: #d3a902;
+}
+
+.padding-stars{
+    padding: 1px;
+}
+
+::ng-deep .border-style{
+    border-bottom: #9ab 1px solid;
+  }
+

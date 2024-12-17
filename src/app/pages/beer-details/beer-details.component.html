@@ -8,9 +8,7 @@
         class="mt-4 border-round"
       />
     </div>
-    <div
-      class="beer-info flex-1 flex flex-column mt-2 border-round-sm text-center"
-    >
+    <div class="beer-info flex flex-column mt-2 border-round-sm text-center">
       <span class="border-bottom-1 pb-3 pt-3"
         ><strong>Type de bière</strong>: {{ beer.beerTypeName }}</span
       >
@@ -34,7 +32,7 @@
   </div>
   <div class="flex flex-column w-full ml-4">
     <div class="w-full ml-4">
-      <h1 class="mb-2 color-title">
+      <h1 class="mb-0 color-title">
         {{ beer.name }} <span class="small-text">depuis les années 80</span>
       </h1>
     </div>
@@ -46,6 +44,43 @@
           like in the page nothign important tho and you could bebzdgy dzgaydg
           ayzgd ayzdgya d dzgayz da zdyazgdyag dzy adzyagzd
         </p>
+        <div class="mt-5">
+          <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
+            <h4 class="m-0">Notes Populaires</h4><span class="font-bold">More</span>
+          </div>
+          @for(rate of ratesPopular; track rate.id; let index = $index){
+          <app-users-rating
+            [comment]="rate.comment"
+            [dateComment]="rate.createdAt"
+            [id]="rate.id"
+            [nbLikes]="rate.likes"
+            [rating]="rate.rate"
+            [idUser]="rate.idUser"
+            [liked]="rate.liked"
+            [nickName]="rate.nickName"
+            [pictureUrl]="rate.pictureUrl"
+            [index] = "index"
+          />
+          }
+        </div>
+        <div class="mt-5">
+          <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
+            <h4 class="m-0">Notes Récentes</h4><span class="font-bold">More</span>
+          </div>
+          @for(rate of ratesNewest; track rate.id){
+          <app-users-rating
+            [comment]="rate.comment"
+            [dateComment]="rate.createdAt"
+            [id]="rate.id"
+            [nbLikes]="rate.likes"
+            [rating]="rate.rate"
+            [idUser]="rate.idUser"
+            [liked]="rate.liked"
+            [nickName]="rate.nickName"
+            [pictureUrl]="rate.pictureUrl"
+          />
+          }
+        </div>
       </div>
       <div class="ml-4">
         <div>
@@ -53,7 +88,7 @@
             class="flex align-items-center flex-column background-side p-2 border-bottom-1 border-round-sm"
           >
             <span class="pb-1">Votre Note</span>
-            <p-rating [(ngModel)]="beer.rating" [cancel]="false" [stars]="5" />
+            <p-rating [(ngModel)]="beer.rate" [cancel]="false" [stars]="5" />
           </p>
           <h4 class="border-bottom-1 pb-1">Notes</h4>
           <p-chart

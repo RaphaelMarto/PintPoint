@@ -1,0 +1,48 @@
+<p-panel [styleClass]="index == 2 ? '' : 'border-style'">
+  <ng-template pTemplate="header">
+    <div class="flex align-items-center gap-2">
+      <p-avatar
+        [image]="
+          pictureUrl == ''
+            ? 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'
+            : pictureUrl
+        "
+        size="large"
+        shape="circle"
+      />
+      <span class="font-bold">
+        <a routerLink="profile/{{ idUser }}"> </a>
+        {{ nickName }}
+      </span>
+      <div>
+        <i
+          class="pi pi-star-fill padding-stars"
+          *ngFor="let star of counterArray(rating)"
+        ></i>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div
+      class="flex flex-wrap align-items-center justify-content-between gap-3"
+    >
+      <div class="flex align-items-center">
+        <p-button
+          icon="pi {{ liked ? 'pi-heart-fill' : 'pi-heart' }}"
+          rounded="true"
+          text="true"
+          styleClass="button-size"
+          (onClick)="LikeDislike()"
+        />
+        <a>{{ nbLikes }}</a>
+      </div>
+      <span class="p-text-secondary">
+        {{ dateComment | dateTime }}
+      </span>
+    </div>
+  </ng-template>
+
+  <p class="m-0">
+    {{ comment }}
+  </p>
+</p-panel>

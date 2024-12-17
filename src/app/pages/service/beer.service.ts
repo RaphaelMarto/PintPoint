@@ -35,8 +35,8 @@ export class BeerService {
     );
   }
 
-  getBeerById(id: number): Observable<BeerCompleteInfo> {
-    return this.http.get<BeerCompleteInfo>(config.API_URL + 'Beers/' + id);
+  getBeerById(id: number, idUser: number): Observable<BeerCompleteInfo> {
+    return this.http.get<BeerCompleteInfo>(config.API_URL + 'Beers/' + id+ '?idUser=' + idUser);
   }
 
   getTypeBeers(): Observable<IBeerType[]> {
