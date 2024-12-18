@@ -12,7 +12,7 @@
   <ng-template pTemplate="end">
     <div class="flex align-items-center gap-2">
       @if(!this.connected){
-      <button pButton class="button-new" size="small" (onClick)="ShowLog()">
+      <button pButton class="button-new" size="small" (click)="ShowLog()">
         Connexion
       </button>
       <button
@@ -26,17 +26,19 @@
         S'enregistrer
       </button>
       } @else {
-      <p-button
+      <button
         icon="pi pi-user"
+        pButton
         [rounded]="true"
+        class="button-new-outline"
         [outlined]="true"
-        (onClick)="logout()"
-      />
+        (click)="logout()"
+      ></button>
       }
     </div>
   </ng-template>
 </p-menubar>
 
-<!-- @if(showLogin){
+@if(showLogin){
     <app-sign-in/>
-} -->
+}

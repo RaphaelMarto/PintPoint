@@ -11,12 +11,16 @@ const routes: Routes = [
   },
   {
     path: 'Beer/Add',
-    component: AddBeerComponent
+    component: AddBeerComponent,
   },
   {
     path: 'Beer/Details/:id',
-    component: BeerDetailsComponent
-  }
+    component: BeerDetailsComponent,
+  },
+  {
+    path: 'Auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
 ];
 
 @NgModule({

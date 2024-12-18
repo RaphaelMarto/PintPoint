@@ -1,0 +1,52 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 50%;
+}
+
+.field-send {
+  margin-top: 2rem;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.register-Container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 90%;
+}
+
+.group-field {
+  display: flex;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.button-new {
+  background: var(--boutton-color-y);
+  border-color: var(--boutton-color-y);
+}
+
+.button-new:hover {
+  background: var(--boutton-color-y-hover);
+  border-color: var(--boutton-color-y-hover);
+}

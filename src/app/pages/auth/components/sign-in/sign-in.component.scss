@@ -1,0 +1,38 @@
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.field {
+  margin-top: 2rem;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.button-new {
+  background: var(--boutton-color-y);
+  border-color: var(--boutton-color-y);
+}
+
+.button-new:hover {
+  background: var(--boutton-color-y-hover);
+  border-color: var(--boutton-color-y-hover);
+}
+
+::ng-deep .p-dialog-content{
+    background-color: #2a323d;
+    color: rgb(220, 225, 230);
+}
+
+::ng-deep .p-dialog-header{
+    background-color: #2a323d;
+}
+
+::ng-deep .p-dialog-footer{
+    background-color: #2a323d;
+}

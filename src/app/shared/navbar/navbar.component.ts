@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../pages/service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,16 +11,16 @@ export class NavbarComponent {
   showLogin: boolean = false;
   connected: boolean = false;
 
-  // authService = inject(AuthService);
+  authService = inject(AuthService);
 
   ngOnInit(): void {
-    // this.authService.isConnectedSubject.subscribe({
-    //   next: (data: boolean) => (this.connected = data),
-    // });
-    // this.authService.emitIsConnected();
-    // this.authService.isShownedSubject.subscribe({
-    //   next: (data: boolean) => (this.showLogin = data),
-    // });
+    this.authService.isConnectedSubject.subscribe({
+      next: (data: boolean) => (this.connected = data),
+    });
+    this.authService.emitIsConnected();
+    this.authService.isShownedSubject.subscribe({
+      next: (data: boolean) => (this.showLogin = data),
+    });
   }
 
   items: MenuItem[] = [
@@ -36,10 +37,10 @@ export class NavbarComponent {
   ];
 
   ShowLog(): void {
-    // this.authService.emitIsShowned();
+    this.authService.emitIsShowned();
   }
 
   logout() {
-    // this.authService.logout();
+    this.authService.logout();
   }
 }
