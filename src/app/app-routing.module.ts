@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,15 @@ const routes: Routes = [
     path: 'Pages',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),
-  }
+  },
+  {
+    path: '404',
+    component: ErrorComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '404',
+  },
 ];
 
 @NgModule({

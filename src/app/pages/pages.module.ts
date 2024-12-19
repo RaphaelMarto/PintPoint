@@ -25,9 +25,10 @@ import { UsersRatingComponent } from './beer-details/components/users-rating/use
 import { PanelModule } from 'primeng/panel';
 import { AvatarModule } from 'primeng/avatar';
 import { PipesModule } from '../pipes/pipes.module';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
-  declarations: [BeerRankingComponent, AddBeerComponent, AddBreweryComponent, BeerDetailsComponent, UsersRatingComponent],
+  declarations: [BeerRankingComponent, AddBeerComponent, AddBreweryComponent, BeerDetailsComponent, UsersRatingComponent, ErrorComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
