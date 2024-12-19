@@ -1,15 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { config } from '../../config/configuration';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { IRated } from '../../interface/iRated';
 import { OffsetRating } from '../../interface/iOffsetRating';
 import { AverageBeer } from '../../interface/iAverageBeer';
+import { PostRate } from '../../interface/iPostRate';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RatingService {
+  private _showAddLog: boolean = false;
+
+  get isAddLogShowned(): boolean {
+    return this._showAddLog;
+  }
+
+  isAddLogShownedSubject: Subject<boolean> = new Subject<boolean>();
+
   constructor(private http: HttpClient) {}
 
   getRatingPopular(idBeer: number): Observable<IRated[]> {
@@ -55,5 +64,14 @@ export class RatingService {
     return this.http.get<AverageBeer[]>(
       config.API_URL + 'Ratings/Moyen/' + idBeer
     );
+  }
+
+  emitIsShowned(): void {
+    this._showAddLog = !this._showAddLog;
+    this.isAddLogShownedSubject.next(this.isAddLogShowned);
+  }
+
+  postRate(rate: PostRate, idBeer: number): Observable<boolean> {
+    return this.http.post<boolean>(config.API_URL + 'Ratings/Rate/' + idBeer, rate);
   }
 }

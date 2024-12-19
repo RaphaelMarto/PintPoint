@@ -6,7 +6,7 @@ import { BeerRankingComponent } from './beer-ranking/beer-ranking.component';
 import { DataViewModule } from 'primeng/dataview';
 import { ButtonModule } from 'primeng/button';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { ShareModule } from "../shared/shared.module";
+import { ShareModule } from '../shared/shared.module';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
@@ -29,7 +29,15 @@ import { ErrorComponent } from './error/error.component';
 import { UsersRatingListComponent } from './users-rating-list/users-rating-list.component';
 
 @NgModule({
-  declarations: [BeerRankingComponent, AddBeerComponent, AddBreweryComponent, BeerDetailsComponent, UsersRatingComponent, ErrorComponent, UsersRatingListComponent],
+  declarations: [
+    BeerRankingComponent,
+    AddBeerComponent,
+    AddBreweryComponent,
+    BeerDetailsComponent,
+    UsersRatingComponent,
+    ErrorComponent,
+    UsersRatingListComponent,
+  ],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -51,7 +59,7 @@ import { UsersRatingListComponent } from './users-rating-list/users-rating-list.
     ChartModule,
     PanelModule,
     AvatarModule,
-    PipesModule
-],
+    PipesModule,
+  ],
 })
 export class PagesModule {}

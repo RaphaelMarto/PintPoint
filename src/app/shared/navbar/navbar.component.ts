@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '../../pages/service/auth.service';
+import { RatingService } from '../../pages/service/rating.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,8 +12,10 @@ import { AuthService } from '../../pages/service/auth.service';
 export class NavbarComponent {
   showLogin: boolean = false;
   connected: boolean = false;
+  showRate: boolean = false;
 
   authService = inject(AuthService);
+  rateService = inject(RatingService);
 
   ngOnInit(): void {
     this.authService.isConnectedSubject.subscribe({
@@ -21,13 +25,16 @@ export class NavbarComponent {
     const token = localStorage.getItem('token');
 
     if (token != null) {
-      if (this.authService.tokenExpired(token))
-        this.authService.logout();
+      if (this.authService.tokenExpired(token)) this.authService.logout();
       this.authService.emitIsConnected();
     }
 
     this.authService.isShownedSubject.subscribe({
       next: (data: boolean) => (this.showLogin = data),
+    });
+
+    this.rateService.isAddLogShownedSubject.subscribe({
+      next: (data: boolean) => (this.showRate = data),
     });
   }
 
@@ -44,8 +51,12 @@ export class NavbarComponent {
     },
   ];
 
-  ShowLog(): void {
+  ShowLogin(): void {
     this.authService.emitIsShowned();
+  }
+
+  ShowAddLog() {
+   this.rateService.emitIsShowned();
   }
 
   logout() {

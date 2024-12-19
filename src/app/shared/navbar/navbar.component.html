@@ -1,8 +1,4 @@
-<p-menubar
-  [autoHide]="true"
-  [autoHideDelay]="0"
-  [model]="items"
->
+<p-menubar [autoHide]="true" [autoHideDelay]="0" [model]="items">
   <ng-template pTemplate="start">
     <a class="title logo-container" routerLink="Home">
       <img class="logo" src="assets/logo.jpg" alt="logo" />
@@ -12,7 +8,7 @@
   <ng-template pTemplate="end">
     <div class="flex align-items-center gap-2">
       @if(!this.connected){
-      <button pButton class="button-new" size="small" (click)="ShowLog()">
+      <button pButton class="button-new" size="small" (click)="ShowLogin()">
         Connexion
       </button>
       <button
@@ -27,6 +23,15 @@
       </button>
       } @else {
       <button
+        pButton
+        icon="pi pi-plus"
+        class="button-new mr-2"
+        size="small"
+        (click)="ShowAddLog()"
+      >
+        LOG
+      </button>
+      <button
         icon="pi pi-user"
         pButton
         [rounded]="true"
@@ -40,5 +45,7 @@
 </p-menubar>
 
 @if(showLogin){
-    <app-sign-in/>
+<app-sign-in />
+} @if(showRate){
+  <app-add-rating />
 }

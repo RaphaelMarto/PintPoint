@@ -1,0 +1,69 @@
+<p-dialog
+  [modal]="true"
+  [(visible)]="showRate"
+  [style]="{ width: '450px' }"
+  styleClass="p-fluid"
+  (onHide)="hideLogin()"
+  [closeOnEscape]="true"
+>
+  <ng-template pTemplate="header" class="mb-2">
+    @if(!searched){
+    <h1>Rechercher une bière</h1>
+    } @if(searched){
+    <h1>Ajouter une note</h1>
+    }
+  </ng-template>
+
+  <ng-template pTemplate="content">
+    @if(!searched){
+    <p-iconField iconPosition="left" Class="mb-2 md:mb-0 mr-2">
+      <p-inputIcon styleClass="pi pi-search" />
+      <input
+        type="text"
+        id="searchInput"
+        pInputText
+        placeholder="Rechercher"
+        [(ngModel)]="toSearch"
+      />
+    </p-iconField>
+    <div class="search-results" *ngIf="searchData.length > 0">
+      <ul>
+        <li *ngFor="let result of searchData" (click)="selectResult(result)">
+          {{ result.name }} <span class="text-xs text-color-cl">- {{ result.capacity}}cl</span>
+        </li>
+      </ul>
+    </div>
+    } @if(searched){
+    <form [formGroup]="rateForm" (ngSubmit)="onSubmit()">
+      <div class="field mt-2">
+        <label for="Rate" class="text-xl mt-2 mb-2 pb-1">Note</label>
+        <p-rating formControlName="Rate" [cancel]="false" [stars]="5" />
+        <small class="p-error" *ngIf="submit && rateForm.get('Rate')?.invalid">
+          La note est requise.
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="Comment" class="text-xl mt-2 mb-2">Commentaire</label>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          id="Comment"
+          formControlName="Comment"
+        ></textarea>
+      </div>
+      <div class="field">
+        <button
+          label="Ajouter"
+          pButton
+          size="small"
+          type="Submit"
+          class="button-new"
+          [disabled]="rateForm.invalid"
+        ></button>
+      </div>
+    </form>
+    }
+  </ng-template>
+</p-dialog>

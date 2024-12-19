@@ -89,7 +89,7 @@
             class="flex align-items-center flex-column background-side p-2 border-bottom-1 border-round-sm"
           >
             <span class="pb-1">Votre Note</span>
-            <p-rating [(ngModel)]="beer.rate" [cancel]="false" [stars]="5" />
+            <p-rating [(ngModel)]="beer.rate" [cancel]="false" [stars]="5" [readonly]="true" />
           </p>
           <h4 class="border-bottom-1 pb-1">Notes</h4>
           <p-chart

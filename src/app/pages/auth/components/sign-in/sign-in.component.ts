@@ -35,6 +35,5 @@ export class SignInComponent {
 
   hideLogin(): void {
     this.authService.emitIsShowned();
-    this.showLogin = true;
   }
 }
