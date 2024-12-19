@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { UserCompleteInfo } from '../../../../interface/IUserCompleteInfo';
 import { AuthService } from '../../../service/auth.service';
 import { Router } from '@angular/router';
 import { fRegisterForm } from '../../../../models/fRegister';
 import { City } from '../../../../interface/iCity';
 import { CountryService } from '../../../service/country.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { LoginResponse } from '../../../../interface/iloginResponse';
+import { UserCompleteInfo } from '../../../../interface/IUserCompleteInfo';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,8 @@ export class RegisterComponent {
   submit: boolean = false;
   cities: City[] = [];
   today = new Date();
+  nickNameExists: boolean = false;
+  emailExists: boolean = false;
 
   // ajouter policyCheck 
   constructor(
@@ -26,6 +29,7 @@ export class RegisterComponent {
   ) {}
   ngOnInit(): void {
     this.loadCity();
+    this.initEmailNickNameCheck();
   }
 
   loadCity() {
@@ -35,10 +39,38 @@ export class RegisterComponent {
     });
   }
 
+  initEmailNickNameCheck(){
+    this.registerForm.get('NickName')!.valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged()
+      )
+      .subscribe(value => {
+        this.checkUserExists("A", value as string);
+      });
+
+      this.registerForm.get('Email')!.valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged()
+      )
+      .subscribe(value => {
+        this.checkUserExists(value as string, "A");
+      });
+  }
+
+  
+  checkUserExists(email: string, nickName:string):void {
+    this.authService.checkExist(email, nickName).subscribe(response => {
+      this.nickNameExists = response.nickNameExists;
+      this.emailExists = response.emailExists;
+    });
+  }
+
   onSubmit(): void {
     this.submit = true;
 
-    if (this.registerForm.valid) {
+    if (this.registerForm.valid && !this.nickNameExists && !this.emailExists) {
       const selectedDateString: string | null = this.registerForm.get(
         'DateOfBirth'
       )?.value as string;

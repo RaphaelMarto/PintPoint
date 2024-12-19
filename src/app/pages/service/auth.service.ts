@@ -4,6 +4,7 @@ import { catchError, map, Observable, Subject, tap, throwError } from 'rxjs';
 import { LoginResponse } from '../../interface/iloginResponse';
 import { UserCompleteInfo } from '../../interface/IUserCompleteInfo';
 import { config } from '../../config/configuration';
+import { checkExist } from '../../interface/iCheckExist';
 
 @Injectable({
   providedIn: 'root',
@@ -69,5 +70,11 @@ export class AuthService {
       config.API_URL + 'Auth/Register',
       user
     );
+  }
+
+  checkExist(email: string, nickName: string): Observable<checkExist> {
+    return this.http.get<checkExist>(
+      config.API_URL + 'Auth/CheckExist?nickName=' + nickName + '&email=' + email
+    )
   }
 }

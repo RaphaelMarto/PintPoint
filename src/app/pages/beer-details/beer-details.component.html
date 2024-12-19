@@ -23,7 +23,7 @@
         ><strong>Pourcentage d'alcool</strong>: {{ beer.alcoholPercent }}%</span
       >
       <span class="border-bottom-1 pb-3 pt-3"
-        ><strong>Quantité</strong>: {{ beer.capacity }}</span
+        ><strong>Quantité</strong>: {{ beer.capacity }}cl</span
       >
       <span class="pb-3 pt-3"
         ><strong>Prix</strong>: {{ beer.price | currency : "EUR" }}</span
@@ -67,7 +67,7 @@
           <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
             <h4 class="m-0">Notes Récentes</h4><span class="font-bold">More</span>
           </div>
-          @for(rate of ratesNewest; track rate.id){
+          @for(rate of ratesNewest; track rate.id;let index = $index){
           <app-users-rating
             [comment]="rate.comment"
             [dateComment]="rate.createdAt"
@@ -78,6 +78,7 @@
             [liked]="rate.liked"
             [nickName]="rate.nickName"
             [pictureUrl]="rate.pictureUrl"
+            [index]="index"
           />
           }
         </div>

@@ -55,8 +55,17 @@
                 registerForm.get('NickName')!.touched
               "
             >
-              Pesudo est requis.
+              Pseudo est requis.
             </small>
+            <small
+            class="p-error"
+            *ngIf="
+              nickNameExists &&
+              registerForm.get('NickName')!.touched
+            "
+          >
+            Pseudo déjà utiliser.
+          </small>
           </div>
       </div>
       <div class="group-field">
@@ -72,6 +81,15 @@
           >
             Email est requis.
           </small>
+          <small
+          class="p-error"
+          *ngIf="
+            emailExists &&
+            registerForm.get('Email')!.touched
+          "
+        >
+          Email déjà utiliser.
+        </small>
         </div>
         <div class="field col-4">
           <label for="DateOfBirth">Date de naissance</label>

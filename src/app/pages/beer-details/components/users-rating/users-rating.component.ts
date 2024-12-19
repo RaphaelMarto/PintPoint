@@ -13,10 +13,10 @@ export class UsersRatingComponent {
   @Input() comment: string = '';
   @Input() idUser: number = 0;
   @Input() rating: number = 0;
-  @Input() dateComment: string = "";
+  @Input() dateComment: string = '';
   @Input() id: number = 0;
-  @Input() nickName: string = "";
-  @Input() pictureUrl: string = "";
+  @Input() nickName: string = '';
+  @Input() pictureUrl: string = '';
   @Input() index: number = 0;
 
   constructor(private ratingService: RatingService) {}
@@ -26,8 +26,11 @@ export class UsersRatingComponent {
   }
 
   LikeDislike(): void {
-    this.ratingService.postLikeDislike(1, !this.liked, this.id).subscribe({
-      next: (data: boolean) => (this.liked = !this.liked),
+    this.ratingService.postLikeDislike(!this.liked, this.id).subscribe({
+      next: (data: boolean) => {
+        this.liked = !this.liked;
+        this.nbLikes = this.liked == true ? this.nbLikes + 1 : this.nbLikes - 1;
+      },
       error: (err: any) => console.log(err),
     });
   }

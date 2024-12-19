@@ -12,29 +12,26 @@ import { AverageBeer } from '../../interface/iAverageBeer';
 export class RatingService {
   constructor(private http: HttpClient) {}
 
-  getRatingPopular(idUser: number): Observable<IRated[]> {
-    return this.http.get<IRated[]>(config.API_URL + 'Ratings/Popular?idUser=' + idUser);
+  getRatingPopular(): Observable<IRated[]> {
+    return this.http.get<IRated[]>(config.API_URL + 'Ratings/Popular');
   }
 
-  getRatingNewest(idUser: number): Observable<IRated[]> {
-    return this.http.get<IRated[]>(config.API_URL + 'Ratings/Newest?idUser=' + idUser);
+  getRatingNewest(): Observable<IRated[]> {
+    return this.http.get<IRated[]>(config.API_URL + 'Ratings/Newest');
   }
 
   postLikeDislike(
-    idUser: number,
     likeStatus: boolean,
     idRating: number
   ): Observable<boolean> {
     return this.http.post<boolean>(config.API_URL + 'Ratings/', {
       likeStatus: likeStatus,
-      idUser: idUser,
       idRating: idRating,
     });
   }
 
   getRating(
     type: string,
-    idUser: number,
     order: string = 'ASC',
     offset: number = 0,
     limit: number = 20
@@ -43,8 +40,6 @@ export class RatingService {
       config.API_URL +
         'Ratings/Type/' +
         type +
-        '?idUser=' +
-        idUser +
         '& offset=' +
         offset +
         '&limit=' +

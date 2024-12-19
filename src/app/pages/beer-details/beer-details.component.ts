@@ -28,7 +28,7 @@ export class BeerDetailsComponent {
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params) =>
-      this.loadBeerInfo(+params['id'], 1)
+      this.loadBeerInfo(+params['id'])
     );
     this.loadRating();
 
@@ -68,8 +68,8 @@ export class BeerDetailsComponent {
     };
   }
 
-  loadBeerInfo(id: number, idUser: number) {
-    this.beerService.getBeerById(id, idUser).subscribe({
+  loadBeerInfo(id: number) {
+    this.beerService.getBeerById(id).subscribe({
       next: (data: BeerCompleteInfo) => (this.beer = data),
       error: (err: any) => console.log(err),
     });
@@ -85,12 +85,12 @@ export class BeerDetailsComponent {
   }
 
   loadRating() {
-    this.ratingService.getRatingPopular(1).subscribe({
+    this.ratingService.getRatingPopular().subscribe({
       next: (data: IRated[]) => (this.ratesPopular = data),
       error: (err: any) => console.log(err),
     });
 
-    this.ratingService.getRatingNewest(1).subscribe({
+    this.ratingService.getRatingNewest().subscribe({
       next: (data: IRated[]) => (this.ratesNewest = data),
       error: (err: any) => console.log(err),
     });
