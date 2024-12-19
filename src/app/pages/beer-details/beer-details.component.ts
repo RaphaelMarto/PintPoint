@@ -17,6 +17,7 @@ export class BeerDetailsComponent {
   chartOptions: any;
   ratesPopular: IRated[] = [];
   ratesNewest: IRated[] = [];
+  idBeer: number = 0;
 
   dataValue: number[] = [];
 
@@ -27,9 +28,11 @@ export class BeerDetailsComponent {
   ) {}
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe((params) =>
-      this.loadBeerInfo(+params['id'])
-    );
+    this.activeRoute.params.subscribe((params) => {
+      this.idBeer = +params['id'];
+      this.loadBeerInfo(this.idBeer);
+    });
+
     this.loadRating();
 
     this.chartData = {
@@ -85,12 +88,12 @@ export class BeerDetailsComponent {
   }
 
   loadRating() {
-    this.ratingService.getRatingPopular().subscribe({
+    this.ratingService.getRatingPopular(this.idBeer).subscribe({
       next: (data: IRated[]) => (this.ratesPopular = data),
       error: (err: any) => console.log(err),
     });
 
-    this.ratingService.getRatingNewest().subscribe({
+    this.ratingService.getRatingNewest(this.idBeer).subscribe({
       next: (data: IRated[]) => (this.ratesNewest = data),
       error: (err: any) => console.log(err),
     });

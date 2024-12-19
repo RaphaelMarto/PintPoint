@@ -76,18 +76,12 @@ export class BeerRankingComponent {
 
   next(event: DataViewLazyLoadEvent): void {
     this.loading = true;
-    let order: string = '';
     this.offset = event.first;
-    if (event.sortOrder == 1) {
-      order = 'ASC';
-    } else {
-      order = 'DESC';
-    }
 
     this.type = event.sortField;
-    this.order = order;
+    this.order = event.sortOrder == 1 ? 'ASC' : 'DESC';
 
-    this.loadBeer(event.sortField, order, '', event.first);
+    this.loadBeer(event.sortField, this.order, '', event.first);
   }
 
   searchLink(): void {

@@ -12,19 +12,18 @@ import { AverageBeer } from '../../interface/iAverageBeer';
 export class RatingService {
   constructor(private http: HttpClient) {}
 
-  getRatingPopular(): Observable<IRated[]> {
-    return this.http.get<IRated[]>(config.API_URL + 'Ratings/Popular');
+  getRatingPopular(idBeer: number): Observable<IRated[]> {
+    return this.http.get<IRated[]>(
+      config.API_URL + 'Ratings/Popular/' + idBeer
+    );
   }
 
-  getRatingNewest(): Observable<IRated[]> {
-    return this.http.get<IRated[]>(config.API_URL + 'Ratings/Newest');
+  getRatingNewest(idBeer: number): Observable<IRated[]> {
+    return this.http.get<IRated[]>(config.API_URL + 'Ratings/Newest/' + idBeer);
   }
 
-  postLikeDislike(
-    likeStatus: boolean,
-    idRating: number
-  ): Observable<boolean> {
-    return this.http.post<boolean>(config.API_URL + 'Ratings/', {
+  postLikeDislike(likeStatus: boolean, idRating: number): Observable<boolean> {
+    return this.http.post<boolean>(config.API_URL + 'Ratings', {
       likeStatus: likeStatus,
       idRating: idRating,
     });
@@ -32,6 +31,7 @@ export class RatingService {
 
   getRating(
     type: string,
+    idBeer: number,
     order: string = 'ASC',
     offset: number = 0,
     limit: number = 20
@@ -40,7 +40,9 @@ export class RatingService {
       config.API_URL +
         'Ratings/Type/' +
         type +
-        '& offset=' +
+        '?idBeer=' +
+        idBeer +
+        '&offset=' +
         offset +
         '&limit=' +
         limit +
@@ -50,6 +52,8 @@ export class RatingService {
   }
 
   getAverageRating(idBeer: number): Observable<AverageBeer[]> {
-    return this.http.get<AverageBeer[]>(config.API_URL + 'Ratings/Moyen/' + idBeer);
+    return this.http.get<AverageBeer[]>(
+      config.API_URL + 'Ratings/Moyen/' + idBeer
+    );
   }
 }

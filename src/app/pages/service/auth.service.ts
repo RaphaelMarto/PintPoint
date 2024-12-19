@@ -74,7 +74,11 @@ export class AuthService {
 
   checkExist(email: string, nickName: string): Observable<checkExist> {
     return this.http.get<checkExist>(
-      config.API_URL + 'Auth/CheckExist?nickName=' + nickName + '&email=' + email
-    )
+      config.API_URL +
+        'Auth/CheckExist?nickName=' +
+        nickName +
+        '&email=' +
+        email
+    );
   }
 }

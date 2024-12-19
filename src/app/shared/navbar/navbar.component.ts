@@ -5,7 +5,7 @@ import { AuthService } from '../../pages/service/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
   showLogin: boolean = false;
@@ -17,7 +17,15 @@ export class NavbarComponent {
     this.authService.isConnectedSubject.subscribe({
       next: (data: boolean) => (this.connected = data),
     });
-    this.authService.emitIsConnected();
+
+    const token = localStorage.getItem('token');
+
+    if (token != null) {
+      if (this.authService.tokenExpired(token))
+        this.authService.logout();
+      this.authService.emitIsConnected();
+    }
+
     this.authService.isShownedSubject.subscribe({
       next: (data: boolean) => (this.showLogin = data),
     });
