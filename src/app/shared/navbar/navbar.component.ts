@@ -12,10 +12,8 @@ import { RatingService } from '../../pages/service/rating.service';
 export class NavbarComponent {
   showLogin: boolean = false;
   connected: boolean = false;
-  showRate: boolean = false;
 
   authService = inject(AuthService);
-  rateService = inject(RatingService);
 
   ngOnInit(): void {
     this.authService.isConnectedSubject.subscribe({
@@ -31,10 +29,6 @@ export class NavbarComponent {
 
     this.authService.isShownedSubject.subscribe({
       next: (data: boolean) => (this.showLogin = data),
-    });
-
-    this.rateService.isAddLogShownedSubject.subscribe({
-      next: (data: boolean) => (this.showRate = data),
     });
   }
 
@@ -53,10 +47,6 @@ export class NavbarComponent {
 
   ShowLogin(): void {
     this.authService.emitIsShowned();
-  }
-
-  ShowAddLog() {
-   this.rateService.emitIsShowned();
   }
 
   logout() {

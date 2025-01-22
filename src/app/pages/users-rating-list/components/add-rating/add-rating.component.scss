@@ -27,6 +27,7 @@
   ::ng-deep .p-dialog-content{
       background-color: #2a323d;
       color: rgb(220, 225, 230);
+      overflow: hidden;
   }
   
   ::ng-deep .p-dialog-header{

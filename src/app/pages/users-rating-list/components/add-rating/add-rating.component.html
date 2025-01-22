@@ -6,7 +6,7 @@
   (onHide)="hideLogin()"
   [closeOnEscape]="true"
 >
-  <ng-template pTemplate="header" class="mb-2">
+  <ng-template pTemplate="header">
     @if(!searched){
     <h1>Rechercher une bière</h1>
     } @if(searched){
@@ -16,11 +16,11 @@
 
   <ng-template pTemplate="content">
     @if(!searched){
-    <p-iconField iconPosition="left" Class="mb-2 md:mb-0 mr-2">
+    <p-iconField iconPosition="left" class="mb-2 md:mb-0 mr-2">
       <p-inputIcon styleClass="pi pi-search" />
       <input
         type="text"
-        id="searchInput"
+        id="searchInput2"
         pInputText
         placeholder="Rechercher"
         [(ngModel)]="toSearch"

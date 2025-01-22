@@ -23,15 +23,6 @@
       </button>
       } @else {
       <button
-        pButton
-        icon="pi pi-plus"
-        class="button-new mr-2"
-        size="small"
-        (click)="ShowAddLog()"
-      >
-        LOG
-      </button>
-      <button
         icon="pi pi-user"
         pButton
         [rounded]="true"
@@ -46,6 +37,4 @@
 
 @if(showLogin){
 <app-sign-in />
-} @if(showRate){
-  <app-add-rating />
 }

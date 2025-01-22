@@ -8,6 +8,7 @@ import { debounceTime } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OffsetResultBeer } from '../../interface/iOffsetResultBeer';
+import { RatingService } from '../service/rating.service';
 
 @Component({
   selector: 'app-beer-ranking',
@@ -20,6 +21,7 @@ export class BeerRankingComponent {
   sortOrder: number = 0;
   sortOptions: SelectItem[] = [];
   totalRecords: number = 0;
+  showRate: boolean = false;
 
   products: Beer[] = [];
   searchControl: FormControl = new FormControl();
@@ -29,7 +31,7 @@ export class BeerRankingComponent {
   order: string = 'ASC';
   offset: number = 0;
 
-  constructor(private beerService: BeerService, private router: Router) {}
+  constructor(private beerService: BeerService, private router: Router, private rateService: RatingService) {}
 
   ngOnInit(): void {
     this.sortOptions = [
@@ -44,6 +46,9 @@ export class BeerRankingComponent {
     ];
 
     this.searchLink();
+    this.rateService.isAddLogShownedSubject.subscribe({
+      next: (data: boolean) => (this.showRate = data),
+    });
   }
 
   loadBeer(
@@ -103,4 +108,8 @@ export class BeerRankingComponent {
   counterArray(n: number): any[] {
     return Array(n);
   }
+
+  ShowAddLog() {
+    this.rateService.emitIsShowned();
+   }
 }
