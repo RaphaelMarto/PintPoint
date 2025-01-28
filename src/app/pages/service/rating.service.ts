@@ -74,4 +74,12 @@ export class RatingService {
   postRate(rate: PostRate, idBeer: number): Observable<boolean> {
     return this.http.post<boolean>(config.API_URL + 'Ratings/Rate/' + idBeer, rate);
   }
+
+  putRate(rate: PostRate, idRating: number): Observable<boolean> {
+    return this.http.put<boolean>(config.API_URL + 'Ratings/Rate/' + idRating, rate);
+  }
+
+  getOneRating(idBeer: number): Observable<PostRate> {
+    return this.http.get<PostRate>(config.API_URL + 'Ratings/Rate/' + idBeer);
+  }
 }

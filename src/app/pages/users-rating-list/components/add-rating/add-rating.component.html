@@ -3,13 +3,14 @@
   [(visible)]="showRate"
   [style]="{ width: '450px' }"
   styleClass="p-fluid"
-  (onHide)="hideLogin()"
+  (onHide)="hideModal()"
   [closeOnEscape]="true"
 >
   <ng-template pTemplate="header">
     @if(!searched){
     <h1>Rechercher une bière</h1>
     } @if(searched){
+    <button pButton label="Retour" class="button-new w-auto" size="small" (click)="goBack()"></button>
     <h1>Ajouter une note</h1>
     }
   </ng-template>
@@ -34,7 +35,12 @@
       </ul>
     </div>
     } @if(searched){
-    <form [formGroup]="rateForm" (ngSubmit)="onSubmit()">
+      <div class="flex">
+
+        <img [src]="beerSelected.pictureUrl" alt="logo" width="150px" height="230px" />
+        <div class="ml-4"><h1>{{ beerSelected.name }} <span class="text-xs text-color-cl">1985</span></h1>  </div>
+      </div>
+    <form [formGroup]="rateForm" (ngSubmit)="alreadyRated ? onSubmitUpdate() : onSubmit()">
       <div class="field mt-2">
         <label for="Rate" class="text-xl mt-2 mb-2 pb-1">Note</label>
         <p-rating formControlName="Rate" [cancel]="false" [stars]="5" />

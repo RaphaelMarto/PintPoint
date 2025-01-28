@@ -20,6 +20,7 @@ export class AddRatingComponent {
   typingTimeout: any;
   toSearch: string = '';
   beerSelected!: Beer;
+  alreadyRated: boolean = false;
 
   constructor(
     private ratingService: RatingService,
@@ -29,15 +30,30 @@ export class AddRatingComponent {
   onSubmit(): void {
     this.submit = true; // add like a beer
     if (this.rateForm.invalid) return;
-    this.ratingService.postRate(this.rateForm.value as PostRate, this.beerSelected.id).subscribe({
-      next: (data: boolean) => {
-        this.ratingService.emitIsShowned();
-      },
-      error: (err: any) => console.log(err),
-    })
+    this.ratingService
+      .postRate(this.rateForm.value as PostRate, this.beerSelected.id)
+      .subscribe({
+        next: (data: boolean) => {
+          this.ratingService.emitIsShowned();
+        },
+        error: (err: any) => console.log(err),
+      });
   }
 
-  hideLogin(): void {
+  onSubmitUpdate() {
+    this.submit = true; // add like a beer
+    if (this.rateForm.invalid) return;
+    this.ratingService
+      .putRate(this.rateForm.value as PostRate, this.beerSelected.id)
+      .subscribe({
+        next: (data: boolean) => {
+          this.ratingService.emitIsShowned();
+        },
+        error: (err: any) => console.log(err),
+      });
+  }
+
+  hideModal(): void {
     this.ratingService.emitIsShowned();
   }
 
@@ -52,7 +68,7 @@ export class AddRatingComponent {
   searchBeers() {
     this.beerService.getBeers('name', 'ASC', 0, this.toSearch).subscribe({
       next: (data: OffsetResultBeer) => {
-        this.searchData = data.results
+        this.searchData = data.results;
       },
       error: (err: any) => console.log(err),
     });
@@ -61,5 +77,22 @@ export class AddRatingComponent {
   selectResult(beer: Beer) {
     this.searched = true;
     this.beerSelected = beer;
+    this.ratingService.getOneRating(beer.id).subscribe({
+      next: (data: PostRate) => {
+        if (data) {
+          this.alreadyRated = true;
+          this.rateForm.controls.Comment.patchValue(data.comment),
+            this.rateForm.controls.Rate.patchValue(data.rate);
+        }
+      },
+      error: (err: any) => console.log(err),
+    });
+  }
+
+  goBack() {
+    this.searched = false;
+    this.alreadyRated = false;
+    this.searchData = [];
+    this.toSearch = '';
   }
 }
