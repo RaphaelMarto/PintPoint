@@ -8,4 +8,5 @@ export interface Beer {
   pictureUrl: string;
   flagUrl: string;
   rating: number;
+  birthYear: number;
 }

@@ -11,6 +11,7 @@ export function fBeerAddForm() {
     idBrewery: new FormControl(null, [Validators.required]),
     capacity: new FormControl(null, [Validators.required]),
     rating: new FormControl(0, [Validators.required]),
+    birthYear: new FormControl<number | null>(null, [Validators.required]),
     createdAt: new FormControl(new Date(Date.now()).toISOString(), [
       Validators.required,
     ]),

@@ -38,7 +38,7 @@
       <div class="flex">
 
         <img [src]="beerSelected.pictureUrl" alt="logo" width="150px" height="230px" />
-        <div class="ml-4"><h1>{{ beerSelected.name }} <span class="text-xs text-color-cl">1985</span></h1>  </div>
+        <div class="ml-4"><h1>{{ beerSelected.name }} <span class="text-xs text-color-cl">{{ beerSelected.birthYear }}</span></h1>  </div>
       </div>
     <form [formGroup]="rateForm" (ngSubmit)="alreadyRated ? onSubmitUpdate() : onSubmit()">
       <div class="field mt-2">

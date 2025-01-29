@@ -19,6 +19,7 @@ export class AddBeerComponent {
   beerForm = fBeerAddForm();
   submitted: boolean = false;
   showCreateBrewery: boolean = false;
+  currentYear = new Date().getFullYear(); 
 
   constructor(
     private router: Router,

@@ -94,20 +94,39 @@
         </small>
       </div>
     </div>
-    <div class="field">
-      <label for="alcoholPercent">Pourcentage d'alcool (%)</label>
-      <p-inputNumber
-        inputId="alcoholPercent"
-        formControlName="alcoholPercent"
-        [maxFractionDigits]="2"
-        required
-      />
-      <small
-        class="p-error"
-        *ngIf="submitted && beerForm.get('alcoholPercent')?.invalid"
-      >
-        Le pourcentage est requis.
-      </small>
+    <div class="select-and-Button">
+      <div class="col-6 p-0">
+        <label for="alcoholPercent">Pourcentage d'alcool (%)</label>
+        <p-inputNumber
+          inputId="alcoholPercent"
+          formControlName="alcoholPercent"
+          [maxFractionDigits]="2"
+          required
+        />
+        <small
+          class="p-error"
+          *ngIf="submitted && beerForm.get('alcoholPercent')?.invalid"
+        >
+          Le pourcentage est requis.
+        </small>
+      </div>
+      <div class="col-6">
+        <label for="birthYear">Année de création</label>
+        <p-inputNumber
+          inputId="birthYear"
+          formControlName="birthYear"
+          [useGrouping]="false"
+          [min]="-2000" 
+          [max]="currentYear"
+          required
+        />
+        <small
+          class="p-error"
+          *ngIf="submitted && beerForm.get('birthYear')?.invalid"
+        >
+          Le prix est requis.
+        </small>
+      </div>
     </div>
     <div class="field">
       <label for="pictureUrl">Photo</label>

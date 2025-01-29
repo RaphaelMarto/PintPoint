@@ -10,4 +10,5 @@ export interface IPostBeer {
     rating: number | null;
     updatedAt: string;
     createdAt: string;
+    birthYear: number;
 }
