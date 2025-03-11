@@ -54,6 +54,10 @@
 .button-new {
   background: var(--boutton-color-y);
   border-color: var(--boutton-color-y);
+  border-color: #d3a902;
+    border-width: 3px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 0 0 rgba(211, 169, 2, 0);
 }
 
 .button-new:hover {
@@ -61,18 +65,64 @@
   border-color: var(--boutton-color-y-hover);
 }
 
+.button-new:active {
+  transform: scale(0.98);
+}
 .button-new-outline {
   background: transparent;
   color: #d3a902;
-  border-color: #d3a902; //f1c40f
+  border-color: #d3a902;
+    border-width: 3px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 0 0 rgba(211, 169, 2, 0);
+  
+    ::ng-deep .p-button-icon {
+      font-size: 1.2rem;
+    }
 }
 
 .button-new-outline:hover {
-  background: #00000015;
+// background: rgba(211, 169, 2, 0.1);
   color: #f1c40f;
   border-color: #f1c40f;
+  box-shadow: 0 0 0 2px rgba(211, 169, 2, 0.15);
+}
+  
+.button-new-outline:active {
+  transform: scale(0.98);
 }
 
-::ng-deep .pi-plus{
+::ng-deep .pi-plus {
   margin-right: 5px;
+}
+
+.nickname {
+  color: #9ab;
+}
+
+::ng-deep .p-menu {
+  background: #2a323d;
+  border: none;
+
+  .p-menuitem-link {
+    color: #fff;
+
+    .p-menuitem-icon {
+      color: #fff;
+    }
+
+    .p-menuitem-text {
+      color: #fff;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .p-menuitem:last-child {
+    .p-menuitem-link:hover {
+      background: #dc3545;
+    }
+  }
 }

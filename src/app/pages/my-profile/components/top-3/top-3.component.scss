@@ -1,0 +1,104 @@
+::ng-deep .beer-picture-1 {
+    width: 8rem;
+    height: 8rem;
+    border-color: #e4b90e;
+    border-width: 5px;
+    border-style: solid;
+}
+
+::ng-deep .beer-picture-2 {
+    width: 6rem;
+    height: 6rem;
+    border-color: #9b9b9b;
+    border-width: 5px;
+    border-style: solid;
+}
+
+::ng-deep .beer-picture-3 {
+    width: 6rem;
+    height: 6rem;
+    border-color: #753205;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.background-color-1 {
+    background-color: #e4b90e;
+    border-radius: 50px / 60px;
+    padding: 5px 10px;
+    color: #fff;
+    top: 95%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+}
+
+.background-color-2 {
+    background-color: #9b9b9b;
+    border-radius: 50px / 60px;
+    padding: 5px 10px;
+    color: #fff;
+    top: 95%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+}
+
+.background-color-3 {
+    background-color: #753205;
+    border-radius: 50px / 60px;
+    padding: 5px 10px;
+    color: #fff;
+    top: 95%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+}
+
+.max-width-top-3 {
+  //  max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    ::ng-deep .beer-picture-1 {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    ::ng-deep .beer-picture-2,
+    ::ng-deep .beer-picture-3 {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .text-xl {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    ::ng-deep .beer-picture-1 {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    ::ng-deep .beer-picture-2,
+    ::ng-deep .beer-picture-3 {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .text-xl {
+        font-size: 0.8rem;
+    }
+
+    .background-color-1,
+    .background-color-2,
+    .background-color-3 {
+        padding: 3px 8px;
+    }
+
+    .gap-3 {
+        gap: 1rem !important;
+    }
+}

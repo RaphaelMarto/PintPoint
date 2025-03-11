@@ -42,8 +42,9 @@
               shape="circle"
             />
             <span class="font-bold">
-              <a routerLink="profile/{{ item.idUser }}"> </a>
-              {{ item.nickName }}
+              <a [routerLink]="['/Pages/Profile/', item.nickName]" class="user-link"> 
+                {{ item.nickName }}
+              </a>
             </span>
             <div>
               <i

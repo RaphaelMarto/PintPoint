@@ -70,7 +70,7 @@
     <div class="select-and-Button">
       <div class="col-6 p-0">
         <label for="capacity">Quantité (cl)</label>
-        <p-inputNumber inputId="capacity" formControlName="capacity" required />
+        <p-inputNumber inputId="capacity" formControlName="capacity" [min]="0" required />
         <small
           class="p-error"
           *ngIf="submitted && beerForm.get('capacity')?.invalid"
@@ -84,6 +84,7 @@
           inputId="price"
           formControlName="price"
           [maxFractionDigits]="2"
+          [min]="0"
           required
         />
         <small
@@ -101,6 +102,8 @@
           inputId="alcoholPercent"
           formControlName="alcoholPercent"
           [maxFractionDigits]="2"
+          [min]="0"
+          [max]="100"
           required
         />
         <small

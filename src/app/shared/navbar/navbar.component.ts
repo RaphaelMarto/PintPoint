@@ -12,12 +12,29 @@ import { RatingService } from '../../pages/service/rating.service';
 export class NavbarComponent {
   showLogin: boolean = false;
   connected: boolean = false;
+  nickname: string = '';
+  itemsPopUp: MenuItem[] = [];
 
   authService = inject(AuthService);
 
   ngOnInit(): void {
     this.authService.isConnectedSubject.subscribe({
-      next: (data: boolean) => (this.connected = data),
+      next: (data: boolean) => {
+        this.connected = data;
+        this.nickname = this.authService.getNickname();
+        this.itemsPopUp = [
+          {
+            label: 'Profil',
+            icon: 'pi pi-user',
+            routerLink: 'Pages/Profile/'+this.nickname,
+          },
+          {
+            label: 'Déconnexion',
+            icon: 'pi pi-sign-out',
+            command: () => this.logout(),
+          },
+        ];
+      },
     });
 
     const token = localStorage.getItem('token');

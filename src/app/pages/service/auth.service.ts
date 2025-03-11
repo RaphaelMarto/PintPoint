@@ -34,6 +34,10 @@ export class AuthService {
     this.isConnectedSubject.next(this.isConnected);
   }
 
+  getNickname(): string {
+    return localStorage.getItem('nickname') ?? '';
+  }
+
   Login(email: string, password: string): Observable<boolean> {
     return this.http
       .post<LoginResponse>(config.API_URL + 'Auth/Login', {
@@ -45,6 +49,7 @@ export class AuthService {
           localStorage.setItem('isconnected', JSON.stringify(true));
           localStorage.setItem('token', response.accessToken);
           localStorage.setItem('refreshToken', response.refreshToken);
+          localStorage.setItem('nickname', response.nickname);
           this.emitIsConnected();
         }),
         map(() => true),

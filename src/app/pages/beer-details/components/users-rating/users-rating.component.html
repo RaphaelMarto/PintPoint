@@ -11,8 +11,9 @@
         shape="circle"
       />
       <span class="font-bold">
-        <a routerLink="profile/{{ idUser }}"> </a>
-        {{ nickName }}
+        <a [routerLink]="['/Pages/Profile', nickName]" class="user-link"> 
+          {{ nickName }}
+        </a>
       </span>
       <div>
         <i

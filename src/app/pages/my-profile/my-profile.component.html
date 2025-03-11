@@ -1,0 +1,58 @@
+<div class="flex flex-row profile-page gap-5 md:gap-8">
+  <div
+    class="flex align-items-center gap-3 flex-column pt-5 w-11 md:w-3"
+  >
+    <p-avatar
+      [image]="
+        pictureUrl == ''
+          ? 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'
+          : pictureUrl
+      "
+      shape="circle"
+      styleClass="profile-picture"
+    />
+    <div class="text-2xl">{{nickname}}</div>
+    <button pButton class="button-new mb-2">Modifier le profile</button>
+    <div class="flex align-items-center mb-2">
+      <i class="pi pi-users mr-1"></i> 0 followers · 0 following
+    </div>
+    <hr class="w-12 border-rest"/>
+  </div>
+  <div class="flex flex-column w-11 md:w-9 pt-5">
+    <h4 class="border-bottom-1 pb-1 color-y">La Meilleure Bière !</h4>
+      <div class="best-beer">
+        <img src="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" alt="Best Beer of User" class="best-beer-image" />
+      </div>
+    <h4 class="border-bottom-1 pb-1">Top 3</h4>
+    <div class="flex flex-column align-items-center">
+      @if(top3.length > 0){
+        <app-top-3 class="min-width-top-3" [top3]="top3"/>
+      }
+    </div>
+    <div class="mt-5">
+      <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
+        <h4 class="m-0">Notes Récentes</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/this.user/likes'">More</a>
+      </div>
+      @for(rate of ratesNewest; track rate.id; let index = $index){
+      <app-users-rating
+        [comment]="rate.comment"
+        [dateComment]="rate.createdAt"
+        [id]="rate.id"
+        [nbLikes]="rate.likes"
+        [rating]="rate.rate"
+        [idUser]="rate.idUser"
+        [liked]="rate.liked"
+        [nickName]="rate.nickName"
+        [pictureUrl]="rate.pictureUrl"
+        [index] = "index"
+      />
+      }
+    </div>
+  </div>
+</div>
+<!--
+user info
+top3 user & acceuil
+notes recentes user
+biere favorite
+-->

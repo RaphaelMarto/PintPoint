@@ -47,12 +47,13 @@
     border-color: rgb(122, 112, 99);
 }
 
-.title{
-  color: inherit;
+.user-link {
+  color: #9ab;
   text-decoration: none;
-}
+  cursor: pointer;
+  transition: color 0.2s ease;
 
-.title:visited {
-color: inherit;
-text-decoration: none;
+  &:hover {
+    color: #bcd;
+  }
 }

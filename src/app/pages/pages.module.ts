@@ -28,6 +28,8 @@ import { PipesModule } from '../pipes/pipes.module';
 import { ErrorComponent } from './error/error.component';
 import { UsersRatingListComponent } from './users-rating-list/users-rating-list.component';
 import { UsersRatingListModule } from "./users-rating-list/users-rating-list.module";
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { Top3Component } from './my-profile/components/top-3/top-3.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { UsersRatingListModule } from "./users-rating-list/users-rating-list.mod
     UsersRatingComponent,
     ErrorComponent,
     UsersRatingListComponent,
+    MyProfileComponent,
+    Top3Component,
   ],
   imports: [
     CommonModule,
@@ -63,5 +67,6 @@ import { UsersRatingListModule } from "./users-rating-list/users-rating-list.mod
     PipesModule,
     UsersRatingListModule
 ],
+exports: [Top3Component]
 })
 export class PagesModule {}

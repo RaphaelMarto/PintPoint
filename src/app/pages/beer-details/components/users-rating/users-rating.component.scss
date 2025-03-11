@@ -41,3 +41,13 @@
     border-bottom: #9ab 1px solid;
   }
 
+.user-link {
+  color: #9ab;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #bcd;
+  }
+}

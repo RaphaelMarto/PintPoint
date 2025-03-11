@@ -1,0 +1,41 @@
+<div class="flex flex-column max-width-top-3 gap-3">
+    <div class="flex flex-column align-items-center relative">
+      <p-avatar
+        [image]="
+          displayTop3[0].pictureUrl == ''
+            ? 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'
+            : displayTop3[0].pictureUrl
+        "
+        shape="circle"
+        styleClass="beer-picture-1"
+      />
+      <div class="text-xl background-color-1 absolute text-center">#1 {{displayTop3[0].name}}</div>
+    </div>
+    <div class="flex flex-row justify-content-around w-full">
+      <div class="flex flex-column align-items-center relative">
+        <p-avatar
+          [image]="
+            displayTop3[1].pictureUrl == ''
+              ? 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'
+              : displayTop3[1].pictureUrl
+          "
+          shape="circle"
+          styleClass="beer-picture-2"
+        />
+        <div class="text-xl background-color-2 absolute text-center">#2 {{displayTop3[1].name}}</div>
+      </div>
+
+      <div class="flex flex-column align-items-center relative">
+        <p-avatar
+          [image]="
+            displayTop3[2].pictureUrl == ''
+              ? 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'
+              : displayTop3[2].pictureUrl
+          "
+          shape="circle"
+          styleClass="beer-picture-3"
+        />
+        <div class="text-xl background-color-3 absolute text-center">#3 {{displayTop3[2].name}}</div>
+      </div>
+    </div>
+  </div>

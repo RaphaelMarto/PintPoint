@@ -1,14 +1,19 @@
 <div class="container">
-  <div class="content">
-    <div class="flex justify-content-center custom-margin">
-      <button
-        pButton
-        size="large"
-        class="button-new align-items-center"
-        routerLink="/Pages/BeerRanking"
-      >
-        Commencer
-      </button>
+  <div class="background">
+    <div class="content">
+      <div class="flex justify-content-center flex-column">
+        @if (top3.length > 0) {
+          <app-top-3 class="min-width-top-3 mt-8 pt-8" [top3]="top3" />
+        }
+        <button
+          pButton
+          size="large"
+          class="button-new mt-8"
+          routerLink="/Pages/BeerRanking"
+        >
+          Commencer
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { IRated } from '../../interface/iRated';
 import { OffsetRating } from '../../interface/iOffsetRating';
 import { AverageBeer } from '../../interface/iAverageBeer';
 import { PostRate } from '../../interface/iPostRate';
+import { Top3 } from '../../interface/itop3';
 
 @Injectable({
   providedIn: 'root',
@@ -81,5 +82,9 @@ export class RatingService {
 
   getOneRating(idBeer: number): Observable<PostRate> {
     return this.http.get<PostRate>(config.API_URL + 'Ratings/Rate/' + idBeer);
+  }
+
+  getTop3Beers(): Observable<Top3[]> {
+    return this.http.get<Top3[]>(config.API_URL + 'Ratings/Rate/Top3');
   }
 }

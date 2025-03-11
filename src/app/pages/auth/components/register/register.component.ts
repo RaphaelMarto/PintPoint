@@ -89,6 +89,7 @@ export class RegisterComponent {
           localStorage.setItem('isconnected', JSON.stringify(true));
           localStorage.setItem('token', res.accessToken);
           localStorage.setItem('refreshToken', res.refreshToken);
+          localStorage.setItem('nickname', res.nickname);
           this.authService.emitIsConnected();
           this.router.navigate(['Home']);
         },
