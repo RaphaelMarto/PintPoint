@@ -28,7 +28,11 @@ const routes: Routes = [
     component: MyProfileComponent,
   },
   {
-    path: 'RatingList/:id/:type',
+    path: 'RatingList/:id/:target/:type',
+    component: UsersRatingListComponent,
+  },
+  {
+    path: 'RatingList/User/:nickname/:target/:type',
     component: UsersRatingListComponent,
   },
 ];

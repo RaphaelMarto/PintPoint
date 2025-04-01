@@ -5,6 +5,7 @@ import { DataViewLazyLoadEvent } from 'primeng/dataview';
 import { IRated } from '../../interface/iRated';
 import { SelectItem } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-users-rating-list',
@@ -12,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './users-rating-list.component.scss',
 })
 export class UsersRatingListComponent {
-  sortField: string = 'rate'; // get from route rate like recent
+  sortField: string = 'rate';
   sortOrder: number = 0;
   nbLikes: number = 666;
   products: IRated[] = [];
@@ -21,9 +22,12 @@ export class UsersRatingListComponent {
   offset: number = 0;
   order: string = 'DESC';
   idBeer: number = 0;
+  target: number = 0;
+  nickname: string = '';
 
   constructor(
     private ratingService: RatingService,
+    private userService: UserService,
     private activeRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -35,7 +39,10 @@ export class UsersRatingListComponent {
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params) => {
-      this.idBeer = +params['id'];
+      this.target = +params['target'];
+      +params['target'] == 0
+        ? (this.idBeer = +params['id'])
+        : (this.nickname = params['nickname']);
       this.sortField = params['type'];
     });
   }
@@ -59,35 +66,65 @@ export class UsersRatingListComponent {
     });
   }
 
+  getUserRating(
+    type: string,
+    nickname: string,
+    order: string = 'ASC',
+    offset: number = 0,
+    limit: number = 20
+  ): void {
+    this.userService
+      .getUserRatings(nickname, type, offset, limit, order)
+      .subscribe({
+        next: (data: OffsetRating) => {
+          this.products = data.results;
+          this.totalRecords = data.total;
+        },
+        error: (err: any) => console.log(err),
+      });
+  }
+
   next(event: DataViewLazyLoadEvent) {
     this.offset = event.first;
-
-    this.getRatingList(this.sortField, this.idBeer, this.order, event.first);
+    if (this.target == 0)
+      this.getRatingList(this.sortField, this.idBeer, this.order, event.first);
+    else
+      this.getUserRating(
+        this.sortField,
+        this.nickname,
+        this.order,
+        event.first
+      );
   }
 
   onSortChange(event: any): void {
     this.order = event.value;
-    this.getRatingList(this.sortField, this.idBeer, this.order, this.offset);
+    if (this.target == 0)
+      this.getRatingList(this.sortField, this.idBeer, this.order, this.offset);
+    else
+      this.getUserRating(
+        this.sortField,
+        this.nickname,
+        this.order,
+        this.offset
+      );
   }
 
   onClickSort(name: string): void {
     this.sortField = name;
-    this.router.navigate(['Pages/RatingList', this.idBeer, this.sortField]);
-  }
-
-  LikeDislike(id: number, index: number): void {
-    this.ratingService
-      .postLikeDislike(!this.products[index].liked, id)
-      .subscribe({
-        next: (data: boolean) => {
-          this.getRatingList(
-            this.sortField,
-            this.idBeer,
-            this.order,
-            this.offset
-          );
-        },
-        error: (err: any) => console.log(err),
-      });
+    if (this.target == 0)
+    this.router.navigate([
+      'Pages/RatingList',
+      this.idBeer,
+      this.target,
+      this.sortField,
+    ]);
+    else
+    this.router.navigate([
+      'Pages/RatingList/User',
+      this.nickname,
+      this.target,
+      this.sortField,
+    ]);
   }
 }

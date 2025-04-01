@@ -27,57 +27,19 @@
       </div>
     </div>
   </ng-template>
-  <ng-template pTemplate="list" let-products>
-    <div *ngFor="let item of products; let first = first; let index = index">
-      <p-panel styleClass="border-style">
-        <ng-template pTemplate="header">
-          <div class="flex align-items-center gap-2">
-            <p-avatar
-              [image]="
-                item.pictureUrl == ''
-                  ? 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'
-                  : item.pictureUrl
-              "
-              size="large"
-              shape="circle"
-            />
-            <span class="font-bold">
-              <a [routerLink]="['/Pages/Profile/', item.nickName]" class="user-link"> 
-                {{ item.nickName }}
-              </a>
-            </span>
-            <div>
-              <i
-                class="pi pi-star-fill padding-stars"
-                *ngFor="let star of counterArray(item.rate)"
-              ></i>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="footer">
-          <div
-            class="flex flex-wrap align-items-center justify-content-between gap-3"
-          >
-            <div class="flex align-items-center">
-              <p-button
-                icon="pi {{ item.liked ? 'pi-heart-fill' : 'pi-heart' }}"
-                rounded="true"
-                text="true"
-                styleClass="button-size"
-                (onClick)="LikeDislike(item.id, index)"
-              />
-              <a>{{ item.likes }}</a>
-            </div>
-            <span class="p-text-secondary">
-              {{ item.createdAt | dateTime }}
-            </span>
-          </div>
-        </ng-template>
-
-        <p class="m-0">
-          {{ item.comment }}
-        </p>
-      </p-panel>
+  <ng-template pTemplate="list">
+    <div *ngFor="let item of products; let first = first;">
+      <app-users-rating
+        [liked]="item.liked" 
+        [nbLikes]="item.likes" 
+        [comment]="item.comment" 
+        [idUser]="item.idUser" 
+        [rating]="item.rate" 
+        [dateComment]="item.createdAt" 
+        [id]="item.id" 
+        [nickName]="item.nickName" 
+        [pictureUrl]="item.pictureUrl" 
+        [index]="0"/>
     </div>
   </ng-template>
 </p-dataView>

@@ -31,7 +31,7 @@
     </div>
     <div class="mt-5">
       <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
-        <h4 class="m-0">Notes Récentes</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/this.user/likes'">More</a>
+        <h4 class="m-0">Notes Récentes</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/User/'+this.nickname+'/1/likes'">More</a>
       </div>
       @for(rate of ratesNewest; track rate.id; let index = $index){
       <app-users-rating
@@ -50,9 +50,3 @@
     </div>
   </div>
 </div>
-<!--
-user info
-top3 user & acceuil
-notes recentes user
-biere favorite
--->

@@ -35,8 +35,8 @@ export class UserService {
     offset: number = 0,
     limit: number = 20,
     order: string = 'ASC'
-  ): Observable<OffsetRating[]> {
-    return this.http.get<OffsetRating[]>(
+  ): Observable<OffsetRating> {
+    return this.http.get<OffsetRating>(
       config.API_URL +
         'User/User-Ratings/' +
         nickname +

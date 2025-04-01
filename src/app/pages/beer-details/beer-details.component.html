@@ -46,7 +46,7 @@
         </p>
         <div class="mt-5">
           <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
-            <h4 class="m-0">Notes Populaires</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/'+ this.idBeer + '/likes'">More</a>
+            <h4 class="m-0">Notes Populaires</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/'+ this.idBeer + '/0/likes'">More</a>
           </div>
           @for(rate of ratesPopular; track rate.id; let index = $index){
           <app-users-rating
@@ -65,7 +65,7 @@
         </div>
         <div class="mt-5">
           <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
-            <h4 class="m-0">Notes Récentes</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/'+ this.idBeer + '/createdAt'">More</a>
+            <h4 class="m-0">Notes Récentes</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/'+ this.idBeer + '/0/createdAt'">More</a>
           </div>
           @for(rate of ratesNewest; track rate.id;let index = $index){
           <app-users-rating

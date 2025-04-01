@@ -29,6 +29,10 @@ export class NavbarComponent {
             routerLink: 'Pages/Profile/'+this.nickname,
           },
           {
+            label: 'Paramètres',
+            icon: 'pi pi-cog',
+          },
+          {
             label: 'Déconnexion',
             icon: 'pi pi-sign-out',
             command: () => this.logout(),
