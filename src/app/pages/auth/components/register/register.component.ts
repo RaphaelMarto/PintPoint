@@ -15,7 +15,6 @@ import { UserCompleteInfo } from '../../../../interface/IUserCompleteInfo';
 })
 export class RegisterComponent {
   registerForm = fRegisterForm();
-  submit: boolean = false;
   cities: City[] = [];
   today = new Date();
   nickNameExists: boolean = false;
@@ -68,8 +67,6 @@ export class RegisterComponent {
   }
 
   onSubmit(): void {
-    this.submit = true;
-
     if (this.registerForm.valid && !this.nickNameExists && !this.emailExists) {
       const selectedDateString: string | null = this.registerForm.get(
         'DateOfBirth'

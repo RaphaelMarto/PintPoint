@@ -5,6 +5,7 @@ import { AddBeerComponent } from './beer-ranking/components/add-beer/add-beer.co
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
 import { UsersRatingListComponent } from './users-rating-list/users-rating-list.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { EditProfileComponent } from './my-profile/components/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'Profile/:nickname',
     component: MyProfileComponent,
+  },
+  {
+    path: 'Profile/Update/:nickname',
+    component: EditProfileComponent,
   },
   {
     path: 'RatingList/:id/:target/:type',

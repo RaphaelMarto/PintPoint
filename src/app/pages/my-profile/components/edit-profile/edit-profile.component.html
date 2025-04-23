@@ -1,0 +1,180 @@
+<div class="profile-container p-fluid">
+  <div class="center">
+    <h1>Mon Profil</h1>
+  </div>
+
+  <div class="sections-wrapper">
+    <!-- User Info Section -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Informations Utilisateur</h2>
+        <button
+          class="edit-button"
+          pButton
+          icon="pi pi-pencil"
+          (click)="toggleEdit('userInfo')"
+        ></button>
+      </div>
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmitUserUpdate()">
+        <div class="group-field">
+          <div class="field col-4">
+            <label for="firstName">Prénom</label>
+            <input
+              id="firstName"
+              type="text"
+              pInputText
+              formControlName="firstName"
+            />
+          </div>
+          <div class="field col-4">
+            <label for="lastName">Nom</label>
+            <input
+              id="lastName"
+              type="text"
+              pInputText
+              formControlName="lastName"
+            />
+          </div>
+        </div>
+        <div class="group-field">
+          <div class="field col-4">
+            <label for="nickName">Pseudo</label>
+            <input
+              id="nickName"
+              type="text"
+              pInputText
+              formControlName="nickName"
+            />
+          </div>
+          <div class="field col-4">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="text"
+              pInputText
+              formControlName="email"
+            />
+          </div>
+        </div>
+        <div class="group-field">
+          <div class="field col-6">
+            <label for="dateOfBirth">Date de naissance</label>
+            <p-calendar
+              inputId="dateOfBirth"
+              formControlName="dateOfBirth"
+              [maxDate]="today"
+              dateFormat="yy-mm-dd"
+              dataType="string"
+              class="flex-grow"
+              [showIcon]="true"
+              [iconDisplay]="'input'"
+            ></p-calendar>
+          </div>
+          <div class="field col-4">
+            <label for="phone">Téléphone</label>
+            <input
+              id="phone"
+              type="text"
+              pInputText
+              formControlName="phone"
+            />
+          </div>
+        </div>
+        <div class="section-buttons" *ngIf="isUserInfoEditable">
+          <button
+            type="button"
+            pButton
+            label="Annulez"
+            class="cancel-button"
+            (click)="cancelEdit('userInfo')"
+          ></button>
+          <button
+            type="button"
+            pButton
+            label="Confirmé"
+            class="confirm-button"
+            (click)="confirmEdit('userInfo')"
+          ></button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Address Info Section -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Informations Adresse</h2>
+        <button
+          class="edit-button"
+          pButton
+          icon="pi pi-pencil"
+          (click)="toggleEdit('addressInfo')"
+        ></button>
+      </div>
+      <form [formGroup]="addressForm" (ngSubmit)="onSubmitUserAddress()">
+        <div class="group-field">
+          <div class="field col-4">
+            <label for="street">Nom de la rue</label>
+            <input
+              id="street"
+              type="text"
+              pInputText
+              formControlName="street"
+            />
+          </div>
+          <div class="field col-4">
+            <label for="houseNumber">Numéro de la maison</label>
+            <input
+              id="houseNumber"
+              type="text"
+              pInputText
+              formControlName="houseNumber"
+            />
+          </div>
+        </div>
+        <div class="group-field">
+          <div class="field col-4">
+            <label for="postCode">Code Postal</label>
+            <input
+              id="postCode"
+              type="text"
+              pInputText
+              formControlName="postCode"
+            />
+          </div>
+          <div class="field col-4">
+            <label for="idCity">Ville</label>
+            <p-dropdown
+              formControlName="idCity"
+              inputId="idCity"
+              [options]="cities"
+              optionLabel="name"
+              optionValue="id"
+              placeholder="Select a City"
+              class="flex-grow"
+              [checkmark]="true"
+              [showClear]="true"
+              [filter]="true"
+              filterBy="name"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div class="section-buttons" *ngIf="isAddressInfoEditable">
+          <button
+            type="button"
+            pButton
+            label="Annulez"
+            class="cancel-button"
+            (click)="cancelEdit('addressInfo')"
+          ></button>
+          <button
+            type="button"
+            pButton
+            label="Confirmé"
+            class="confirm-button"
+            (click)="confirmEdit('addressInfo')"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -2,10 +2,13 @@ import { IRated } from './../../interface/iRated';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { config } from '../../config/configuration';
-import { UserProfil } from '../../interface/iUserProfil';
+import { ProfilePic } from '../../interface/iProfilePic';
 import { Observable } from 'rxjs';
 import { Top3 } from '../../interface/itop3';
 import { OffsetRating } from '../../interface/iOffsetRating';
+import { UserUpdate } from '../../interface/iUserUpdate';
+import { UserAdress } from '../../interface/iUserAddress';
+import { UserProfile } from '../../interface/iUserProfile';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +16,9 @@ import { OffsetRating } from '../../interface/iOffsetRating';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getUserInfo(nickname: string): Observable<UserProfil> {
-    return this.http.get<UserProfil>(
-      config.API_URL + 'User/Profil-Info/' + nickname
+  getProfilPic(nickname: string): Observable<ProfilePic> {
+    return this.http.get<ProfilePic>(
+      config.API_URL + 'User/Profil-Picture/' + nickname
     );
   }
 
@@ -49,5 +52,16 @@ export class UserService {
         '&order=' +
         order
     );
+  }
+
+  getUserProfile(nickName:string): Observable<UserProfile> {
+    return this.http.get<UserProfile>(config.API_URL + 'User/Profile/' + nickName);
+  }
+
+  updateUserProfile(user: UserUpdate, nickName: string): Observable<boolean> {
+    return this.http.put<boolean>(config.API_URL + 'User/Profile/' + nickName, user);
+  }
+  updateUserAddress(user: UserAdress): Observable<boolean> {
+    return this.http.put<boolean>(config.API_URL + 'User/Address', user);
   }
 }

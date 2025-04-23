@@ -2,7 +2,7 @@ import { UserService } from './../service/user.service';
 import { Component } from '@angular/core';
 import { IRated } from '../../interface/iRated';
 import { Top3 } from '../../interface/itop3';
-import { UserProfil } from '../../interface/iUserProfil';
+import { ProfilePic } from '../../interface/iProfilePic';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -35,12 +35,16 @@ export class MyProfileComponent {
       error: (err: any) => console.log(err),
     });
 
-    this.userService.getUserInfo(this.nickname).subscribe({
-      next: (data: UserProfil) => {
+    this.userService.getProfilPic(this.nickname).subscribe({
+      next: (data: ProfilePic) => {
         if (data == null) this.router.navigate(['/Error']);
         else this.pictureUrl = data.pictureUrl;
       },
       error: (err: any) => console.log(err),
     });
+  }
+
+  editProfile(){
+    this.router.navigate([`/Pages/Profile/Update/${this.nickname}`]);
   }
 }

@@ -30,6 +30,8 @@ import { UsersRatingListComponent } from './users-rating-list/users-rating-list.
 import { UsersRatingListModule } from "./users-rating-list/users-rating-list.module";
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { Top3Component } from './my-profile/components/top-3/top-3.component';
+import { EditProfileComponent } from './my-profile/components/edit-profile/edit-profile.component';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { Top3Component } from './my-profile/components/top-3/top-3.component';
     UsersRatingListComponent,
     MyProfileComponent,
     Top3Component,
+    EditProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -65,7 +68,8 @@ import { Top3Component } from './my-profile/components/top-3/top-3.component';
     PanelModule,
     AvatarModule,
     PipesModule,
-    UsersRatingListModule
+    UsersRatingListModule,
+    CalendarModule,
 ],
 exports: [Top3Component]
 })
