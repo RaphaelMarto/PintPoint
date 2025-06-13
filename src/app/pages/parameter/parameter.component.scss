@@ -1,0 +1,24 @@
+::ng-deep .p-tabview .p-tabview-nav {
+  background: #2a323d;
+}
+
+::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  background: #2a323d;
+  color: #9ab;
+  padding-bottom: 10px;
+}
+
+::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link:hover,::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link:hover {
+  color: #f1c619;
+}
+
+::ng-deep .p-tabview .p-tabview-panels {
+  background: #2a323d;
+  color: #9ab;
+  padding: 10px 0px 0px 0px;
+}
+
+::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  border-color: #d3a902;
+  color: #d3a902;
+}

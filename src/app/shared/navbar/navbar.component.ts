@@ -26,11 +26,12 @@ export class NavbarComponent {
           {
             label: 'Profil',
             icon: 'pi pi-user',
-            routerLink: 'Pages/Profile/'+this.nickname,
+            routerLink: 'Pages/Profil/'+this.nickname,
           },
           {
             label: 'Paramètres',
             icon: 'pi pi-cog',
+            routerLink: 'Pages/Profil/Parameters/'+this.nickname,
           },
           {
             label: 'Déconnexion',
@@ -44,7 +45,7 @@ export class NavbarComponent {
     const token = localStorage.getItem('token');
 
     if (token != null) {
-      if (this.authService.tokenExpired(token)) this.authService.logout();
+      if (this.authService.tokenExpired(token)) this.logout();
       this.authService.emitIsConnected();
     }
 

@@ -1,3 +1,4 @@
+import { isMeGuard } from './../guard/is-me.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BeerRankingComponent } from './beer-ranking/beer-ranking.component';
@@ -5,7 +6,9 @@ import { AddBeerComponent } from './beer-ranking/components/add-beer/add-beer.co
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
 import { UsersRatingListComponent } from './users-rating-list/users-rating-list.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { EditProfileComponent } from './my-profile/components/edit-profile/edit-profile.component';
+import { ParameterComponent } from './parameter/parameter.component';
+import { PasswordResetComponent } from './parameter/components/security/components/password-reset/password-reset.component';
+import { authGuard } from '../guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,12 +28,18 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'Profile/:nickname',
+    path: 'Profil/PasswordReset',
+    component: PasswordResetComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'Profil/:nickname',
     component: MyProfileComponent,
   },
   {
-    path: 'Profile/Update/:nickname',
-    component: EditProfileComponent,
+    path: 'Profil/Parameters/:nickname',
+    component: ParameterComponent,
+    canActivate: [isMeGuard],
   },
   {
     path: 'RatingList/:id/:target/:type',

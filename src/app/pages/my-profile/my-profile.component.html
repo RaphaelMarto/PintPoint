@@ -12,7 +12,9 @@
       styleClass="profile-picture"
     />
     <div class="text-2xl">{{nickname}}</div>
-    <button pButton class="button-new mb-2" (click)="editProfile()">Modifier le profile</button>
+    @if(isMe){
+      <button pButton class="button-new mb-2" (click)="editProfile()">Modifier le profile</button>
+    }
     <div class="flex align-items-center mb-2">
       <i class="pi pi-users mr-1"></i> 0 followers · 0 following
     </div>

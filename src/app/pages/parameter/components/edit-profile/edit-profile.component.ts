@@ -1,5 +1,5 @@
-import { UserUpdate } from './../../../../interface/iUserUpdate';
-import { CountryService } from './../../../service/country.service';
+import { UserUpdate } from '../../../../interface/iUserUpdate';
+import { CountryService } from '../../../service/country.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { City } from '../../../../interface/iCity';
@@ -135,6 +135,7 @@ export class EditProfileComponent implements OnInit {
       // Reset user info form and disable editing
       this.profileForm.reset();
       this.profileForm.patchValue(this.userProfile.userProfile);
+      this.profileForm.get('dateOfBirth')?.setValue(new Date(this.userProfile.userProfile.dateOfBirth));
       this.isUserInfoEditable = false;
       this.profileForm.disable();
     } else if (section === 'addressInfo') {

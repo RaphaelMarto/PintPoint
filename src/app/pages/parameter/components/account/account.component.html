@@ -1,0 +1,56 @@
+<h3>Dangereux</h3>
+<div class="background-color flex flex-column gap-2">
+        <div class="w-full p-5 border-bottom">
+            <div class="flex flex-row gap-1">
+                <div class="w-12rem">
+                    <label class="color-text mb-2">Suppression de votre compte</label> 
+                </div>
+                <div class="flex-grow-1">
+                    <button
+                        pButton
+                        label="Supprimer"
+                        class="button-danger"
+                        (click)="ShowDelete()">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="w-full p-5">
+            <div class="flex flex-row gap-1">
+                <div class="w-12rem">
+                    <label class="color-text mb-2">Mot de passe</label> 
+                </div>
+                <div class="flex-grow-1">
+                    <a href="#" class="color-text-link">Changer votre mot de passe</a>
+                </div>
+            </div>
+        </div> -->
+</div>
+<p-dialog
+  [modal]="true"
+  [(visible)]="showState"
+  [style]="{ width: '450px' }"
+  styleClass="p-fluid"
+  (onHide)="HideDelete()"
+  [closeOnEscape]="true"
+>
+<ng-template pTemplate="header"><h2>Supprimer votre compte ?</h2></ng-template>
+    <ng-template pTemplate="content">
+        <div class="mb-6">
+        <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
+        </div>
+        <div class="flex flex-row gap-1 justify-content-end">
+        <div class="w-12rem"></div>
+        <div class="flex-grow">
+            <button
+            label="Supprimer"
+            pButton
+            size="small"
+            type="button"
+            class="button-danger"
+            (click)="deleteAccount()"
+            ></button>
+        </div>
+        </div>
+    </ng-template>
+</p-dialog>

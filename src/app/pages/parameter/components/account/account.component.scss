@@ -1,0 +1,36 @@
+.color-text {
+    color: #9ab;
+}
+
+.background-color{
+    width: 75rem;
+    background-color: #18181b;
+    border: 1px solid rgba(83, 83, 95, 0.48);
+    border-radius: 0.4rem;
+}
+
+.border-bottom{
+    border-bottom: 1px solid rgba(83, 83, 95, 0.48);
+}
+
+.button-danger{
+    background-color: #ca3838 !important;
+    border-color: #ca3838 !important;
+    height: 2.5rem;
+    font-size: 0.81rem;
+}
+
+::ng-deep .p-dialog-content{
+    background-color: #2a323d;
+    color: rgb(220, 225, 230);
+}
+
+::ng-deep .p-dialog-header{
+    background-color: #2a323d;
+    padding-bottom: 0;
+    color: rgb(220, 225, 230);
+}
+
+::ng-deep .p-dialog-footer{
+    background-color: #2a323d;
+}

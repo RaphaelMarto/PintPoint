@@ -22,9 +22,12 @@
   min-width: 300px;
   margin-bottom: 30px;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  // border: 1px solid #ddd;
+  // border-radius: 8px;
+  // background-color: #f9f9f9;
+   background-color: #18181b;
+    border: 1px solid rgba(83, 83, 95, 0.48);
+    border-radius: 0.4rem;
 }
 
 .section-header {
@@ -37,7 +40,6 @@
 .section-header h2 {
   margin: 0;
   font-size: 18px;
-  color: #333;
 }
 
 .edit-button {
@@ -45,7 +47,7 @@
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: #333;
+  color: #9ab;
 }
 
 ::ng-deep .pi{
@@ -60,7 +62,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .field {
@@ -69,23 +71,57 @@
 }
 
 ::ng-deep .field input:disabled,
- .field p-calendar:disabled,
- .field p-dropdown:disabled {
-  background-color: #f0f0f0;
-  color: #999;
+::ng-deep .field .p-calendar:disabled,
+::ng-deep .field .p-disabled {
+  background-color: #000000 !important;
+  color: #9ab;
+}
+
+::ng-deep .field input,
+::ng-deep .field .p-calendar,
+::ng-deep .field .p-dropdown{
+  background-color: #18181b;
+  color: #9ab;
+  border: 1px solid rgba(83, 83, 95, 0.48);
+  border-radius: 0.4rem;
+}
+
+::ng-deep .p-dropdown .p-dropdown-label {
+  background-color: #18181b !important;
+  color: #9ab !important;
+}
+
+::ng-deep .p-disabled .p-dropdown-label{
+  background-color: #000000 !important;
+  color: #9ab !important;
+}
+
+::ng-deep .p-dropdown-panel .p-dropdown-header {
+  background-color: #18181b !important;
+  border-bottom: 1px solid #18181b;
+  color: #9ab !important;
+}
+
+::ng-deep .p-dropdown-panel {
+  background: #18181b !important;
+  color: #9ab !important;
+}
+
+::ng-deep .p-dropdown-item {
+  background-color: #18181b !important;
+  color: #9ab !important;
 }
 
 .section-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 20px;
 }
 
 .confirm-button {
-  background-color: #28a745;
+  background-color: #218838;
   color: #fff;
-  border: 1px solid #28a745;
+  border: 1px solid #218838;
   padding: 10px 20px;
   border-radius: 6px;
   width: 120px;
@@ -94,13 +130,13 @@
 }
 
 .confirm-button:hover {
-  background-color: #218838;
+  background-color: #19662a;
 }
 
 .cancel-button {
-  background-color: #dc3545;
+  background-color: #c82333;
   color: #fff;
-  border: 1px solid #dc3545;
+  border: 1px solid #c82333;
   padding: 10px 20px;
   border-radius: 6px;
   width: 120px;
@@ -109,7 +145,7 @@
 }
 
 .cancel-button:hover {
-  background-color: #c82333;
+  background-color: #941724;
 }
 
 @media (max-width: 850px) {

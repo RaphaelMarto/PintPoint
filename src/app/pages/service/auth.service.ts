@@ -1,3 +1,4 @@
+import { UpdatePassword } from './../../interface/iUpdatePassword';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, Subject, tap, throwError } from 'rxjs';
@@ -5,6 +6,8 @@ import { LoginResponse } from '../../interface/iloginResponse';
 import { UserCompleteInfo } from '../../interface/IUserCompleteInfo';
 import { config } from '../../config/configuration';
 import { checkExist } from '../../interface/iCheckExist';
+import { ResMessage } from '../../interface/IResMessage';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +23,7 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('isconnected') ?? 'false');
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   isShownedSubject: Subject<boolean> = new Subject<boolean>();
   isConnectedSubject: Subject<boolean> = new Subject<boolean>();
@@ -63,6 +66,7 @@ export class AuthService {
   logout(): void {
     localStorage.clear();
     this.emitIsConnected();
+    this.router.navigate(['Home']);
   }
 
   tokenExpired(token: string): boolean {
@@ -85,5 +89,13 @@ export class AuthService {
         '&email=' +
         email
     );
+  }
+
+  updatePassword(UpdatePassword: UpdatePassword): Observable<ResMessage> {
+    return this.http.put<ResMessage>(config.API_URL + 'Auth/UpdatePassword', UpdatePassword);
+  }
+
+  deleteUser(): Observable<ResMessage> {
+    return this.http.delete<ResMessage>(config.API_URL + 'Auth/DeleteUser');
   }
 }

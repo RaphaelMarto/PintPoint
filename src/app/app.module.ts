@@ -1,3 +1,4 @@
+import { ToastModule } from 'primeng/toast';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,6 +13,7 @@ import localeFr from '@angular/common/locales/fr';
 import { authInterceptor } from '../interceptor/auth-interceptor.interceptor';
 import { ButtonModule } from 'primeng/button';
 import { PagesModule } from './pages/pages.module';
+import { MessageService } from 'primeng/api';
 
 registerLocaleData(localeFr);
 
@@ -23,9 +25,10 @@ registerLocaleData(localeFr);
     AppRoutingModule,
     ShareModule,
     ButtonModule,
-    PagesModule
+    PagesModule,
+    ToastModule,
   ],
-  providers: [provideHttpClient(withInterceptors([authInterceptor])),{ provide: LOCALE_ID, useValue: 'fr-FR' }],
+  providers: [provideHttpClient(withInterceptors([authInterceptor])),{ provide: LOCALE_ID, useValue: 'fr-FR' }, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

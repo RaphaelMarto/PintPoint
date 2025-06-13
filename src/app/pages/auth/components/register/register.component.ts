@@ -45,7 +45,7 @@ export class RegisterComponent {
         distinctUntilChanged()
       )
       .subscribe(value => {
-        this.checkUserExists("A", value as string);
+        this.checkUserExists(this.registerForm.get('Email')!.value as string, value as string);
       });
 
       this.registerForm.get('Email')!.valueChanges
@@ -54,7 +54,7 @@ export class RegisterComponent {
         distinctUntilChanged()
       )
       .subscribe(value => {
-        this.checkUserExists(value as string, "A");
+        this.checkUserExists(value as string, this.registerForm.get('NickName')!.value as string);
       });
   }
 

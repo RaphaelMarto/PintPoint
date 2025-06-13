@@ -15,6 +15,7 @@ export class MyProfileComponent {
   ratesNewest: IRated[] = [];
   top3: Top3[] = [];
   nickname: string = '';
+  isMe: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -23,6 +24,7 @@ export class MyProfileComponent {
   ) {
     this.activeRoute.params.subscribe((params) => {
       this.nickname = params['nickname'];
+      this.isMe = this.nickname === localStorage.getItem('nickname');
     });
 
     this.userService.getUserRecentRating(this.nickname).subscribe({
@@ -45,6 +47,6 @@ export class MyProfileComponent {
   }
 
   editProfile(){
-    this.router.navigate([`/Pages/Profile/Update/${this.nickname}`]);
+    this.router.navigate([`/Pages/Profil/Parameters/${this.nickname}`]);
   }
 }
