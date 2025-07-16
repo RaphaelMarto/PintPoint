@@ -14,6 +14,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { AuthComponent } from './auth.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     PasswordModule,
     DropdownModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+    CheckboxModule,
   ],
   exports: [SignInComponent]
 })

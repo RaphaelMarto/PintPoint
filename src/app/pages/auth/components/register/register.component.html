@@ -1,257 +1,175 @@
 <div class="register-Container p-fluid">
-    <div class="center mt-5">
-      <h1>Register</h1>
-    </div>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <div class="group-field">
-        <div class="field col-4">
-          <label for="FirstName">Prénom</label>
-          <input
-            id="FirstName"
-            type="text"
-            pInputText
-            formControlName="FirstName"
-          />
-          <small
-            class="p-error"
-            *ngIf="
+  <div class="center mt-5">
+    <h1>Register</h1>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="group-field">
+      <div class="field col-4">
+        <label for="FirstName">Prénom</label>
+        <input id="FirstName" type="text" pInputText formControlName="FirstName" />
+        <small class="p-error" *ngIf="
               registerForm.get('FirstName')!.invalid &&
               registerForm.get('FirstName')!.touched
-            "
-          >
+            ">
           Prénom est requis.
-          </small>
-        </div>
-        <div class="field col-4">
-          <label for="LastName">Nom</label>
-          <input
-            id="LastName"
-            type="text"
-            pInputText
-            formControlName="LastName"
-          />
-          <small
-            class="p-error"
-            *ngIf="
+        </small>
+      </div>
+      <div class="field col-4">
+        <label for="LastName">Nom</label>
+        <input id="LastName" type="text" pInputText formControlName="LastName" />
+        <small class="p-error" *ngIf="
               registerForm.get('LastName')!.invalid &&
               registerForm.get('LastName')!.touched
-            "
-          >
-            Nom est requis.
-          </small>
-        </div>
-        <div class="field col-4">
-            <label for="NickName">Pseudo</label>
-            <input
-              id="NickName"
-              type="text"
-              pInputText
-              formControlName="NickName"
-            />
-            <small
-              class="p-error"
-              *ngIf="
+            ">
+          Nom est requis.
+        </small>
+      </div>
+      <div class="field col-4">
+        <label for="NickName">Pseudo</label>
+        <input id="NickName" type="text" pInputText formControlName="NickName" />
+        <small class="p-error" *ngIf="
                 registerForm.get('NickName')!.invalid &&
                 registerForm.get('NickName')!.touched
-              "
-            >
-              Pseudo est requis.
-            </small>
-            <small
-            class="p-error"
-            *ngIf="
+              ">
+          Pseudo est requis.
+        </small>
+        <small class="p-error" *ngIf="
               nickNameExists &&
               registerForm.get('NickName')!.touched
-            "
-          >
-            Pseudo déjà utiliser.
-          </small>
-          </div>
+            ">
+          Pseudo déjà utiliser.
+        </small>
       </div>
-      <div class="group-field">
-        <div class="field  col-4">
-          <label for="Email">Email</label>
-          <input id="Email" type="text" pInputText formControlName="Email" />
-          <small
-            class="p-error"
-            *ngIf="
+    </div>
+    <div class="group-field">
+      <div class="field  col-4">
+        <label for="Email">Email</label>
+        <input id="Email" type="text" pInputText formControlName="Email" />
+        <small class="p-error" *ngIf="
               registerForm.get('Email')!.invalid &&
               registerForm.get('Email')!.touched
-            "
-          >
-            Email est requis.
-          </small>
-          <small
-          class="p-error"
-          *ngIf="
+            ">
+          Email est requis.
+        </small>
+        <small class="p-error" *ngIf="
             emailExists &&
             registerForm.get('Email')!.touched
-          "
-        >
+          ">
           Email déjà utiliser.
         </small>
-        </div>
-        <div class="field col-4">
-          <label for="DateOfBirth">Date de naissance</label>
-          <p-calendar
-            inputId="DateOfBirth"
-            formControlName="DateOfBirth"
-            [maxDate]="today"
-            dateFormat="yy-mm-dd"
-            dataType="string"
-            class="flex-grow"
-            [showIcon]="true"
-            [iconDisplay]="'input'"
-          ></p-calendar>
-          <small
-            class="p-error"
-            *ngIf="
+      </div>
+      <div class="field col-4">
+        <label for="DateOfBirth">Date de naissance</label>
+        <p-calendar inputId="DateOfBirth" formControlName="DateOfBirth" [maxDate]="today" dateFormat="yy-mm-dd"
+          dataType="string" class="flex-grow" [showIcon]="true" [iconDisplay]="'input'"></p-calendar>
+        <small class="p-error" *ngIf="
               registerForm.get('DateOfBirth')!.invalid &&
               registerForm.get('DateOfBirth')!.touched
-            "
-          >
-            Date de naissance requise.
-          </small>
-        </div>
-        <div class="field col-4">
-            <label for="Phone">Téléphone (optionel)</label>
-            <input
-              id="Phone"
-              type="text"
-              pInputText
-              formControlName="Phone"
-            />
-          </div>
+            ">
+          Date de naissance requise.
+        </small>
       </div>
-      <div class="group-field">
-        <div class="field col-4">
-          <label for="IdCity">ville</label>
-          <p-dropdown
-            formControlName="IdCity"
-            inputId="IdCity"
-            [options]="cities"
-            optionLabel="name"
-            optionValue="id"
-            placeholder="Select a City"
-            class="flex-grow"
-            [checkmark]="true"
-            [showClear]="true"
-            [filter]="true"
-            filterBy="name"
-          />
-          <small
-            class="p-error"
-            *ngIf="
+      <div class="field col-4">
+        <label for="Phone">Téléphone (optionel)</label>
+        <input id="Phone" type="text" pInputText formControlName="Phone" />
+      </div>
+    </div>
+    <div class="group-field">
+      <div class="field col-4">
+        <label for="IdCity">Ville</label>
+        <p-dropdown formControlName="IdCity" inputId="IdCity" [options]="cities" optionLabel="name" optionValue="id"
+          placeholder="Choix de Ville" class="flex-grow" [checkmark]="true" [showClear]="true" [filter]="true"
+          filterBy="name" />
+        <small class="p-error" *ngIf="
               registerForm.get('IdCity')!.invalid &&
               registerForm.get('IdCity')!.touched
-            "
-          >
-            La ville est requise.
-          </small>
-        </div>
-        <div class="field col-4">
-          <label for="Street">Nom de la rue</label>
-          <input id="Street" type="text" pInputText formControlName="Street" />
-          <small
-            class="p-error"
-            *ngIf="
+            ">
+          La ville est requise.
+        </small>
+      </div>
+      <div class="field col-4">
+        <label for="Street">Nom de la rue</label>
+        <input id="Street" type="text" pInputText formControlName="Street" />
+        <small class="p-error" *ngIf="
               registerForm.get('Street')!.invalid &&
               registerForm.get('Street')!.touched
-            "
-          >
-            Le Nom de la rue est requis
-          </small>
-        </div>
+            ">
+          Le Nom de la rue est requis
+        </small>
+      </div>
 
-            <div class="field col-4">
-              <label for="HouseNumber">numero de la maison</label>
-              <input inputId="HouseNumber" pInputText formControlName="HouseNumber" />
-              <small
-                class="p-error"
-                *ngIf="
+      <div class="field col-4">
+        <label for="HouseNumber">Numero de la maison</label>
+        <input inputId="HouseNumber" pInputText formControlName="HouseNumber" />
+        <small class="p-error" *ngIf="
                   registerForm.get('HouseNumber')!.invalid &&
                   registerForm.get('HouseNumber')!.touched
-                "
-              >
-                Le numero de maison est requis.
-              </small>
-            </div>
+                ">
+          Le numero de maison est requis.
+        </small>
       </div>
-      <div class="group-field">
-        <div class="field col-6">
-            <label for="PostCode">Code Postal</label>
-            <input
-              id="PostCode"
-              type="text"
-              pInputText
-              formControlName="PostCode"
-            />
-            <small
-              class="p-error"
-              *ngIf="
+    </div>
+    <div class="group-field">
+      <div class="field col-6">
+        <label for="PostCode">Code Postal</label>
+        <input id="PostCode" type="text" pInputText formControlName="PostCode" />
+        <small class="p-error" *ngIf="
                 registerForm.get('PostCode')!.invalid &&
                 registerForm.get('PostCode')!.touched
-              "
-            >
-              Le Code Postal est requis.
-            </small>
-          </div>
-          <div class="field col-6">
-            <label for="PictureUrl">Photo de Profile</label>
-            <input
-              id="PictureUrl"
-              type="text"
-              pInputText
-              formControlName="PictureUrl"
-            />
-          </div>
+              ">
+          Le Code Postal est requis.
+        </small>
       </div>
-      <div class="group-field">
-        <div class="field col-6">
-          <label for="Password">Password</label>
-          <p-password
-            [toggleMask]="true"
-            [feedback]="true"
-            inputId="Password"
-            formControlName="Password"
-          />
-          <small
-            class="p-error"
-            *ngIf="
+      <div class="field col-6">
+        <label for="PictureUrl">Photo de Profile</label>
+        <input id="PictureUrl" type="text" pInputText formControlName="PictureUrl" />
+      </div>
+    </div>
+    <div class="group-field">
+      <div class="field col-6">
+        <label for="Password">Mot de passe</label>
+        <p-password [toggleMask]="true" [feedback]="true" autocomplete="password" inputId="Password"
+          formControlName="Password" />
+        <small class="p-error" *ngIf="
               registerForm.get('Password')!.invalid &&
               registerForm.get('Password')!.touched
-            "
-          >
-            Password must be 6 characters minimum.
-          </small>
-        </div>
-        <div class="field col-6">
-          <label for="confirmPassword">Confirm Password</label>
-          <p-password
-            [toggleMask]="true"
-            [feedback]="true"
-            inputId="confirmPassword"
-            formControlName="confirmPassword"
-          />
-          <small
-            class="p-error"
-            *ngIf="
+            ">
+          Le mot de passe doit etre de 6 caractères minimum.
+        </small>
+      </div>
+      <div class="field col-6">
+        <label for="confirmPassword">Confirmé le mot de passe</label>
+        <p-password [toggleMask]="true" [feedback]="true" autocomplete="confirmPassword" inputId="confirmPassword"
+          formControlName="confirmPassword" />
+        <small class="p-error" *ngIf="
               registerForm.get('confirmPassword')!.invalid &&
               registerForm.get('confirmPassword')!.touched
-            "
-          >
-            The 2 password are different.
-          </small>
-        </div>
+            ">
+          les 2 mots de passe sont différent.
+        </small>
       </div>
-      <div class="field-send center col-12">
-        <button
-          label="Register"
-          pButton
-          class="button-new"
-          type="Submit"
-          [disabled]="registerForm.invalid"
-        ></button>
+    </div>
+    <div class="group-field">
+      <div class="field col-12">
+        <label class="d-flex align-items-center" for="PolicyCheck">
+          <p-checkbox formControlName="PolicyCheck" inputId="PolicyCheck" [binary]="true" class="mr-1"></p-checkbox>
+          <span>
+            J'accepte les
+            <a routerLink="/Pages/TermsAndConditions" target="_blank">
+              Termes et Conditions
+            </a>
+          </span>
+        </label>
+        <small class="p-error" *ngIf="
+              registerForm.get('PolicyCheck')!.invalid &&
+              registerForm.get('PolicyCheck')!.touched
+            ">
+          Vous devez accepter les termes et conditions.
+        </small>
       </div>
-    </form>
-  </div>
+    </div>
+    <div class="center col-12">
+      <button label="Register" pButton class="button-new" type="Submit" [disabled]="registerForm.invalid"></button>
+    </div>
+  </form>
+</div>

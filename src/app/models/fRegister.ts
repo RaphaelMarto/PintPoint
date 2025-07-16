@@ -24,7 +24,7 @@ export function fRegisterForm() {
         Validators.minLength(6),
       ]),
       PictureUrl: new FormControl(''),
-      PolicyCheck: new FormControl(true, [Validators.required]),
+      PolicyCheck: new FormControl(false, [Validators.required, Validators.requiredTrue]),
       confirmPassword: new FormControl('', [
         Validators.required,
       ]),

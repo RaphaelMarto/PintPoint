@@ -9,6 +9,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ParameterComponent } from './parameter/parameter.component';
 import { PasswordResetComponent } from './parameter/components/security/components/password-reset/password-reset.component';
 import { authGuard } from '../guard/auth.guard';
+import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'RatingList/User/:nickname/:target/:type',
     component: UsersRatingListComponent,
+  },
+  {
+    path: 'TermsAndConditions',
+    component: TermsAndConditionComponent,
   },
 ];
 

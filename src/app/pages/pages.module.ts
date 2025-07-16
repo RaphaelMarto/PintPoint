@@ -38,6 +38,7 @@ import { SecurityComponent } from './parameter/components/security/security.comp
 import { AccountComponent } from './parameter/components/account/account.component';
 import { SplitterModule } from 'primeng/splitter';
 import { PasswordResetComponent } from './parameter/components/security/components/password-reset/password-reset.component';
+import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { PasswordResetComponent } from './parameter/components/security/componen
     SecurityComponent,
     AccountComponent,
     PasswordResetComponent,
+    TermsAndConditionComponent,
   ],
   imports: [
     CommonModule,
