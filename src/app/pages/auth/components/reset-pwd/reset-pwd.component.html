@@ -1,0 +1,34 @@
+<div class="flex justify-content-center align-items-center" style="height: 80vh;">
+    <form [formGroup]="resetPwdForm" (ngSubmit)="onSubmit()" class="p-card p-4" style="min-width: 320px;">
+        <div class="field">
+            <label for="Password" class="mb-2">Nouveau mot de passe</label>
+            <p-password inputId="Password" formControlName="Password" autocomplete="password" [toggleMask]="true"
+                [feedback]="true" styleClass="mt-1 w-100" inputStyleClass="w-100" class="w-100"></p-password>
+            <small class="p-error"
+                *ngIf="resetPwdForm.get('Password')?.errors?.['required'] && resetPwdForm.get('Password')?.touched">
+                Mot de passe est requis.
+            </small>
+            <small class="p-error"
+                *ngIf="resetPwdForm.get('Password')?.errors?.['minlength'] && resetPwdForm.get('Password')?.touched">
+                Mot de passe doit contenir au moins 6 caractères.
+            </small>
+        </div>
+        <div class="field">
+            <label for="confirmPassword" class="mb-2">Confirmer le mot de passe</label>
+            <p-password inputId="confirmPassword" autocomplete="confirm-password" formControlName="confirmPassword"
+                [toggleMask]="true" [feedback]="false" styleClass="mt-1"></p-password>
+            <small class="p-error"
+                *ngIf="resetPwdForm.get('confirmPassword')?.errors?.['required'] && resetPwdForm.get('confirmPassword')?.touched">
+                Confirmer le mot de passe est requis.
+            </small>
+            <small class="p-error"
+                *ngIf="resetPwdForm.get('confirmPassword')?.errors?.['passwordMatch'] && resetPwdForm.get('confirmPassword')?.touched">
+                Les mots de passe sont différent.
+            </small>
+        </div>
+        <div class="flex justify-content-end">
+            <button pButton type="submit" label="Envoyer" class="mt-2 button-new"
+                [disabled]="resetPwdForm.invalid"></button>
+        </div>
+    </form>
+</div>

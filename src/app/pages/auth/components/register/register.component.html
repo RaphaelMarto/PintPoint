@@ -130,22 +130,26 @@
         <label for="Password">Mot de passe</label>
         <p-password [toggleMask]="true" [feedback]="true" autocomplete="password" inputId="Password"
           formControlName="Password" />
-        <small class="p-error" *ngIf="
-              registerForm.get('Password')!.invalid &&
-              registerForm.get('Password')!.touched
-            ">
-          Le mot de passe doit etre de 6 caractères minimum.
+        <small class="p-error"
+          *ngIf="registerForm.get('Password')?.errors?.['required'] && registerForm.get('Password')?.touched">
+          Mot de passe est requis.
+        </small>
+        <small class="p-error"
+          *ngIf="registerForm.get('Password')?.errors?.['minlength'] && registerForm.get('Password')?.touched">
+          Mot de passe doit contenir au moins 6 caractères.
         </small>
       </div>
       <div class="field col-6">
         <label for="confirmPassword">Confirmé le mot de passe</label>
         <p-password [toggleMask]="true" [feedback]="true" autocomplete="confirmPassword" inputId="confirmPassword"
           formControlName="confirmPassword" />
-        <small class="p-error" *ngIf="
-              registerForm.get('confirmPassword')!.invalid &&
-              registerForm.get('confirmPassword')!.touched
-            ">
-          les 2 mots de passe sont différent.
+        <small class="p-error"
+          *ngIf="registerForm.get('confirmPassword')?.errors?.['required'] && registerForm.get('confirmPassword')?.touched">
+          Confirmer le mot de passe est requis.
+        </small>
+        <small class="p-error"
+          *ngIf="registerForm.get('confirmPassword')?.errors?.['passwordMatch'] && registerForm.get('confirmPassword')?.touched">
+          Les mots de passe sont différent.
         </small>
       </div>
     </div>

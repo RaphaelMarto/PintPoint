@@ -36,3 +36,18 @@ label {
 ::ng-deep .p-dialog-footer{
     background-color: #2a323d;
 }
+
+.forgot-password-link {
+  position: absolute;
+  right: 0;
+  bottom: -18px;
+  font-size: 0.85rem;
+  color: #6c757d;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.field.position-relative {
+  position: relative;
+  margin-bottom: 2.2rem;
+}

@@ -1,0 +1,17 @@
+.button-new {
+  background: var(--boutton-color-y);
+  border-color: var(--boutton-color-y);
+}
+
+.button-new:hover {
+  background: var(--boutton-color-y-hover);
+  border-color: var(--boutton-color-y-hover);
+}
+
+::ng-deep input {
+  width: 100%;
+}
+
+::ng-deep .p-password {
+  width: 100%;
+}

@@ -98,4 +98,27 @@ export class AuthService {
   deleteUser(): Observable<ResMessage> {
     return this.http.delete<ResMessage>(config.API_URL + 'Auth/DeleteUser');
   }
+
+  verifyEmail(code: string, id : number): Observable<ResMessage> {
+    return this.http.post<ResMessage>(
+      config.API_URL + 'Auth/VerifyEmail',
+      {
+        code: code,
+        id: id
+      });
+  }
+
+  getPasswordCode(email: string): Observable<ResMessage> {
+    return this.http.get<ResMessage>(config.API_URL + 'Auth/GetPasswordCode?email=' + email);
+  }
+
+  updatePasswordByCode(code: string, newPassword: string, id : number): Observable<ResMessage> {
+    return this.http.put<ResMessage>(
+      config.API_URL + 'Auth/UpdatePasswordByCode',
+      {
+        code: code,
+        newPassword: newPassword,
+        id: id
+      });
+  }
 }

@@ -1,0 +1,14 @@
+<div class="flex justify-content-center mt-3">
+  <div class="text-center">
+    @if(emailConfirmed == 'pending') {
+        <ng-container>
+          <p class="mb-3" style="font-size: 1.5rem;">Confirmation de l'email en cours.</p>
+          <p-progressSpinner styleClass="mt-2" strokeWidth="2" animationDuration="1s"></p-progressSpinner>
+        </ng-container>
+    } @else if(emailConfirmed == 'ok'){
+          <p class="mt-3" style="font-size: 1.5rem; color: #218838;">Email confirmé avec succès !</p>
+    } @else {
+          <p class="mt-3" style="font-size: 1.5rem; color: #dc3545;">Erreur lors de la confirmation de l'email.</p>
+    }
+  </div>
+</div>

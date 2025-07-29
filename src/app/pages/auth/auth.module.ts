@@ -15,10 +15,13 @@ import { AuthComponent } from './auth.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { CheckboxModule } from 'primeng/checkbox';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ResetPwdComponent } from './components/reset-pwd/reset-pwd.component';
 
 
 @NgModule({
-  declarations: [AuthComponent, RegisterComponent, SignInComponent],
+  declarations: [AuthComponent, RegisterComponent, SignInComponent, VerifyEmailComponent, ResetPwdComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -33,6 +36,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     CalendarModule,
     InputNumberModule,
     CheckboxModule,
+    ProgressSpinnerModule,
   ],
   exports: [SignInComponent]
 })

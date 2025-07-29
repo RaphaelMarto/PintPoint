@@ -33,7 +33,6 @@ export function fRegisterForm() {
       IdCity: new FormControl(null, [Validators.required]),
       HouseNumber: new FormControl('', [Validators.required]),
       PostCode: new FormControl('', [Validators.required]),
-      AddressId: new FormControl(0, [Validators.required]),
     },
     { validators: [passwordMatchValidator] }
   );
