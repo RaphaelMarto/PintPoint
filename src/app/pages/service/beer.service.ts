@@ -6,6 +6,7 @@ import { IBeerType } from '../../interface/iBeerType';
 import { OffsetResultBeer } from '../../interface/iOffsetResultBeer';
 import { BeerCompleteInfo } from '../../interface/ibeerCompleteInfo';
 import { IPostBeer } from '../../interface/iPostBeer';
+import { IPutBeer } from '../../interface/iPutBeer';
 
 @Injectable({
   providedIn: 'root',
@@ -45,5 +46,9 @@ export class BeerService {
 
   postBeer(beer: IPostBeer): Observable<boolean> {
     return this.http.post<boolean>(config.API_URL + 'Beers', beer);
+  }
+
+  putBeer(beer: IPutBeer): Observable<boolean> {
+    return this.http.put<boolean>(config.API_URL + 'Beers', beer);
   }
 }

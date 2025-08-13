@@ -2,32 +2,17 @@
 <div class="flex flex-row beer-details">
   <div class="flex flex-column">
     <div class="beer-image">
-      <img
-        [src]="beer.pictureUrl == '' ? 'assets/logo.jpg' : beer.pictureUrl"
-        alt="Beer Image"
-        class="mt-4 border-round"
-      />
+      <img [src]="beer.pictureUrl == '' ? 'assets/logo.jpg' : beer.pictureUrl" alt="Beer Image"
+        class="mt-4 border-round" />
     </div>
     <div class="beer-info flex flex-column mt-2 border-round-sm text-center">
-      <span class="border-bottom-1 pb-3 pt-3"
-        ><strong>Type de bière</strong>: {{ beer.beerTypeName }}</span
-      >
-      <span class="border-bottom-1 pb-3 pt-3"
-        ><strong>Producteur</strong>: {{ beer.breweryName }}</span
-      >
-      <span class="border-bottom-1 pb-3 pt-3"
-        ><strong>Pays</strong>: {{ beer.countryName }}
-        <img [src]="beer.flagUrl" alt="Country Flag" width="25px" height="20px"
-      /></span>
-      <span class="border-bottom-1 pb-3 pt-3"
-        ><strong>Pourcentage d'alcool</strong>: {{ beer.alcoholPercent }}%</span
-      >
-      <span class="border-bottom-1 pb-3 pt-3"
-        ><strong>Quantité</strong>: {{ beer.capacity }}cl</span
-      >
-      <span class="pb-3 pt-3"
-        ><strong>Prix</strong>: {{ beer.price | currency : "EUR" }}</span
-      >
+      <span class="border-bottom-1 pb-3 pt-3"><strong>Type de bière</strong>: {{ beer.beerTypeName }}</span>
+      <span class="border-bottom-1 pb-3 pt-3"><strong>Producteur</strong>: {{ beer.breweryName }}</span>
+      <span class="border-bottom-1 pb-3 pt-3"><strong>Pays</strong>: {{ beer.countryName }}
+        <img [src]="beer.flagUrl" alt="Country Flag" width="25px" height="20px" /></span>
+      <span class="border-bottom-1 pb-3 pt-3"><strong>Pourcentage d'alcool</strong>: {{ beer.alcoholPercent }}%</span>
+      <span class="border-bottom-1 pb-3 pt-3"><strong>Quantité</strong>: {{ beer.capacity }}cl</span>
+      <span class="pb-3 pt-3"><strong>Prix</strong>: {{ beer.price | currency : "EUR" }}</span>
     </div>
   </div>
   <div class="flex flex-column w-full ml-4">
@@ -46,61 +31,43 @@
         </p>
         <div class="mt-5">
           <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
-            <h4 class="m-0">Notes Populaires</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/'+ this.idBeer + '/0/likes'">More</a>
+            <h4 class="m-0">Notes Populaires</h4><a class="font-bold user-link"
+              [routerLink]="'/Pages/RatingList/'+ this.idBeer + '/0/likes'">More</a>
           </div>
           @for(rate of ratesPopular; track rate.id; let index = $index){
-          <app-users-rating
-            [comment]="rate.comment"
-            [dateComment]="rate.createdAt"
-            [id]="rate.id"
-            [nbLikes]="rate.likes"
-            [rating]="rate.rate"
-            [idUser]="rate.idUser"
-            [liked]="rate.liked"
-            [nickName]="rate.nickName"
-            [pictureUrl]="rate.pictureUrl"
-            [index] = "index"
-          />
+          <app-users-rating [comment]="rate.comment" [dateComment]="rate.createdAt" [id]="rate.id"
+            [nbLikes]="rate.likes" [rating]="rate.rate" [idUser]="rate.idUser" [liked]="rate.liked"
+            [nickName]="rate.nickName" [pictureUrl]="rate.pictureUrl" [index]="index" />
           }
         </div>
         <div class="mt-5">
           <div class="border-bottom-1 pb-1 flex mt-3 mb-1 justify-content-between">
-            <h4 class="m-0">Notes Récentes</h4><a class="font-bold user-link" [routerLink]="'/Pages/RatingList/'+ this.idBeer + '/0/createdAt'">More</a>
+            <h4 class="m-0">Notes Récentes</h4><a class="font-bold user-link"
+              [routerLink]="'/Pages/RatingList/'+ this.idBeer + '/0/createdAt'">More</a>
           </div>
           @for(rate of ratesNewest; track rate.id;let index = $index){
-          <app-users-rating
-            [comment]="rate.comment"
-            [dateComment]="rate.createdAt"
-            [id]="rate.id"
-            [nbLikes]="rate.likes"
-            [rating]="rate.rate"
-            [idUser]="rate.idUser"
-            [liked]="rate.liked"
-            [nickName]="rate.nickName"
-            [pictureUrl]="rate.pictureUrl"
-            [index]="index"
-          />
+          <app-users-rating [comment]="rate.comment" [dateComment]="rate.createdAt" [id]="rate.id"
+            [nbLikes]="rate.likes" [rating]="rate.rate" [idUser]="rate.idUser" [liked]="rate.liked"
+            [nickName]="rate.nickName" [pictureUrl]="rate.pictureUrl" [index]="index" />
           }
         </div>
       </div>
       <div class="ml-4">
         <div>
-          <p
-            class="flex align-items-center flex-column background-side p-2 border-bottom-1 border-round-sm"
-          >
+          <div class="pb-2">
+            <button pButton pRipple class="button-new w-full" [routerLink]="'/Pages/Beer/Put/' + beer.id">
+              <span class="flex align-items-center justify-content-center w-full">
+                <i class="pi pi-pencil pr-2"></i> Modifier
+              </span>
+            </button>
+          </div>
+          <p class="flex align-items-center flex-column background-side p-2 border-bottom-1 border-round-sm">
             <span class="pb-1">Votre Note</span>
             <p-rating [(ngModel)]="beer.rate" [cancel]="false" [stars]="5" [readonly]="true" />
           </p>
           <h4 class="border-bottom-1 pb-1">Notes</h4>
-          <p-chart
-            type="bar"
-            [data]="chartData"
-            [options]="chartOptions"
-            class="chart-size"
-            width="175"
-            height="100"
-            [responsive]="true"
-          ></p-chart>
+          <p-chart type="bar" [data]="chartData" [options]="chartOptions" class="chart-size" width="175" height="100"
+            [responsive]="true"></p-chart>
           <div class="mt-2">
             <h4 class="border-bottom-1 pb-1">Moyenne</h4>
             <p class="font-bold text-2xl text-center">

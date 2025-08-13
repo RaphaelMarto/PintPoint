@@ -57,3 +57,13 @@
     color: #bcd;
   }
 }
+
+.button-new {
+  background: #d3a902;
+  border-color: #d3a902;
+}
+
+.button-new:hover {
+  background: var(--boutton-color-y-hover);
+  border-color: var(--boutton-color-y-hover);
+}

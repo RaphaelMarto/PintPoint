@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { fBeerAddForm } from '../../../../models/fBeerForm';
+import { fBeerAddForm } from '../../../../models/fBeerAddForm';
 import { Router } from '@angular/router';
 import { BeerService } from '../../../service/beer.service';
 import { IBeerType } from '../../../../interface/iBeerType';
@@ -71,7 +71,6 @@ export class AddBeerComponent {
   }
 
   getRefreshData(): void {
-    console.log('refresh');
     this.loadBreweries();
   }
 }

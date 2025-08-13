@@ -1,16 +1,16 @@
 <div class="flex justify-content-center">
   <form
-    [formGroup]="beerForm"
+    [formGroup]="beerPutForm"
     [style]="{ width: '450px' }"
     class="p-fluid mb-4"
   >
     <div class="border-bottom-1">
-      <h1>Ajouter une bière</h1>
+      <h1>Modifier une bière</h1>
     </div>
     <div class="field">
       <label for="name">Name</label>
       <input pInputText id="name" formControlName="name" required autofocus />
-      <small class="p-error" *ngIf="submitted && beerForm.get('name')?.invalid">
+      <small class="p-error" *ngIf="submitted && beerPutForm.get('name')?.invalid">
         Le Nom est requis.
       </small>
     </div>
@@ -31,7 +31,7 @@
       />
       <small
         class="p-error"
-        *ngIf="submitted && beerForm.get('idBeerType')?.invalid"
+        *ngIf="submitted && beerPutForm.get('idBeerType')?.invalid"
       >
         Genre est requis.
       </small>
@@ -62,7 +62,7 @@
       </div>
       <small
         class="p-error"
-        *ngIf="submitted && beerForm.get('idBrewery')?.invalid"
+        *ngIf="submitted && beerPutForm.get('idBrewery')?.invalid"
       >
         Fabricant est requis.
       </small>
@@ -73,7 +73,7 @@
         <p-inputNumber inputId="capacity" formControlName="capacity" [min]="0" required />
         <small
           class="p-error"
-          *ngIf="submitted && beerForm.get('capacity')?.invalid"
+          *ngIf="submitted && beerPutForm.get('capacity')?.invalid"
         >
           La quantité est requise.
         </small>
@@ -89,7 +89,7 @@
         />
         <small
           class="p-error"
-          *ngIf="submitted && beerForm.get('price')?.invalid"
+          *ngIf="submitted && beerPutForm.get('price')?.invalid"
         >
           Le prix est requis.
         </small>
@@ -108,7 +108,7 @@
         />
         <small
           class="p-error"
-          *ngIf="submitted && beerForm.get('alcoholPercent')?.invalid"
+          *ngIf="submitted && beerPutForm.get('alcoholPercent')?.invalid"
         >
           Le pourcentage est requis.
         </small>
@@ -125,7 +125,7 @@
         />
         <small
           class="p-error"
-          *ngIf="submitted && beerForm.get('birthYear')?.invalid"
+          *ngIf="submitted && beerPutForm.get('birthYear')?.invalid"
         >
           Le prix est requis.
         </small>

@@ -1,4 +1,5 @@
-export interface IPostBeer {
+export interface IPutBeer {
+    id: number;
     name: string;
     price: number | null;
     pictureUrl: string;

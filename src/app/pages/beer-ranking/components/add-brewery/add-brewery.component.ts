@@ -22,8 +22,7 @@ export class AddBreweryComponent {
   breweryForm = fBreweryForm();
   countries: ICountry[] = [];
 
-  constructor(private beerService: BeerService,
-    private breweryService: BreweryService,
+  constructor(private breweryService: BreweryService,
     private countryService: CountryService) {}
 
   ngOnInit(): void {

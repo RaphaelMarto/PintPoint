@@ -10,6 +10,7 @@ import { ParameterComponent } from './parameter/parameter.component';
 import { PasswordResetComponent } from './parameter/components/security/components/password-reset/password-reset.component';
 import { authGuard } from '../guard/auth.guard';
 import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
+import { PutBeerComponent } from './beer-details/components/put-beer/put-beer.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'Beer/Add',
     component: AddBeerComponent,
+  },
+  {
+    path: 'Beer/Put/:id',
+    component: PutBeerComponent,
   },
   {
     path: 'Beer/Details/:id',
