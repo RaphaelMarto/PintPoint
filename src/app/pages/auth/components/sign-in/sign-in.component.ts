@@ -24,9 +24,9 @@ export class SignInComponent {
   onSubmit(): void {
     this.submit = true;
     if (this.authForm.invalid) return;
-
+    
     this.authService
-      .Login(this.authForm.value.Email!, this.authForm.value.Password!)
+      .Login(this.authForm.value.Email!, this.authForm.value.Password!, this.authForm.value.RememberMe!)
       .subscribe({
         next: (isLoggedIn: boolean) => {
           if (isLoggedIn) {

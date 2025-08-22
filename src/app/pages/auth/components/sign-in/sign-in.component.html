@@ -23,6 +23,14 @@
           mot de passe oublié ?
         </a>
       </div>
+      <div>
+        <label class="d-flex align-items-center" for="RememberMe">
+          <p-checkbox formControlName="RememberMe" inputId="RememberMe" [binary]="true" class="mr-1"></p-checkbox>
+          <span>
+            Rester connecté
+          </span>
+        </label>
+      </div>
       <div class="field">
         <button label="Login" pButton size="small" type="Submit" class="button-new"
           [disabled]="authForm.invalid"></button>

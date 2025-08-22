@@ -8,6 +8,7 @@ import { config } from '../../config/configuration';
 import { checkExist } from '../../interface/iCheckExist';
 import { ResMessage } from '../../interface/IResMessage';
 import { Router } from '@angular/router';
+import { RefreshToken } from '../../interface/iRefreshToken';
 
 @Injectable({
   providedIn: 'root',
@@ -41,11 +42,12 @@ export class AuthService {
     return localStorage.getItem('nickname') ?? '';
   }
 
-  Login(email: string, password: string): Observable<boolean> {
+  Login(email: string, password: string, rememberMe: boolean): Observable<boolean> {
     return this.http
       .post<LoginResponse>(config.API_URL + 'Auth/Login', {
         password: password,
         email: email,
+        rememberMe: rememberMe,
       })
       .pipe(
         tap((response) => {
@@ -72,6 +74,15 @@ export class AuthService {
   tokenExpired(token: string): boolean {
     const expiry = JSON.parse(atob(token.split('.')[1])).exp;
     return Math.floor(new Date().getTime() / 1000) >= expiry;
+  }
+
+  refreshToken(): Observable<RefreshToken> {
+    const refreshToken = localStorage.getItem('refreshToken') ?? '';
+    const token = localStorage.getItem('token') ?? '';
+    return this.http.post<RefreshToken>(
+      config.API_URL + 'Auth/Refresh',
+      { refreshToken: refreshToken, accessToken: token }
+    );
   }
 
   register(user: UserCompleteInfo): Observable<LoginResponse> {

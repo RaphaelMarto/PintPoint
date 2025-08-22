@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '../../pages/service/auth.service';
 import { RatingService } from '../../pages/service/rating.service';
+import { RefreshToken } from '../../interface/iRefreshToken';
 
 
 @Component({
@@ -26,12 +27,12 @@ export class NavbarComponent {
           {
             label: 'Profil',
             icon: 'pi pi-user',
-            routerLink: 'Pages/Profil/'+this.nickname,
+            routerLink: 'Pages/Profil/' + this.nickname,
           },
           {
             label: 'Paramètres',
             icon: 'pi pi-cog',
-            routerLink: 'Pages/Profil/Parameters/'+this.nickname,
+            routerLink: 'Pages/Profil/Parameters/' + this.nickname,
           },
           {
             label: 'Déconnexion',
@@ -41,13 +42,6 @@ export class NavbarComponent {
         ];
       },
     });
-
-    const token = localStorage.getItem('token');
-
-    if (token != null) {
-      if (this.authService.tokenExpired(token)) this.logout();
-      this.authService.emitIsConnected();
-    }
 
     this.authService.isShownedSubject.subscribe({
       next: (data: boolean) => (this.showLogin = data),
