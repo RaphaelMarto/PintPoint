@@ -1,8 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '../../pages/service/auth.service';
-import { RatingService } from '../../pages/service/rating.service';
-import { RefreshToken } from '../../interface/iRefreshToken';
 
 
 @Component({
@@ -46,6 +44,8 @@ export class NavbarComponent {
     this.authService.isShownedSubject.subscribe({
       next: (data: boolean) => (this.showLogin = data),
     });
+
+    this.authService.emitIsConnected();
   }
 
   items: MenuItem[] = [

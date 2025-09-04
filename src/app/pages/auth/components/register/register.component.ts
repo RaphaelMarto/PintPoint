@@ -20,12 +20,11 @@ export class RegisterComponent {
   nickNameExists: boolean = false;
   emailExists: boolean = false;
 
-  // ajouter policyCheck 
   constructor(
     private authService: AuthService,
     private router: Router,
     private coutryService: CountryService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.loadCity();
     this.initEmailNickNameCheck();
@@ -38,7 +37,7 @@ export class RegisterComponent {
     });
   }
 
-  initEmailNickNameCheck(){
+  initEmailNickNameCheck() {
     this.registerForm.get('NickName')!.valueChanges
       .pipe(
         debounceTime(500),
@@ -48,7 +47,7 @@ export class RegisterComponent {
         this.checkUserExists(this.registerForm.get('Email')!.value as string, value as string);
       });
 
-      this.registerForm.get('Email')!.valueChanges
+    this.registerForm.get('Email')!.valueChanges
       .pipe(
         debounceTime(500),
         distinctUntilChanged()
@@ -58,8 +57,8 @@ export class RegisterComponent {
       });
   }
 
-  
-  checkUserExists(email: string, nickName:string):void {
+
+  checkUserExists(email: string, nickName: string): void {
     this.authService.checkExist(email, nickName).subscribe(response => {
       this.nickNameExists = response.nickNameExists;
       this.emailExists = response.emailExists;
@@ -84,8 +83,6 @@ export class RegisterComponent {
       this.authService.register(data as UserCompleteInfo).subscribe({
         next: (res: LoginResponse) => {
           localStorage.setItem('isconnected', JSON.stringify(true));
-          localStorage.setItem('token', res.accessToken);
-          localStorage.setItem('refreshToken', res.refreshToken);
           localStorage.setItem('nickname', res.nickname);
           this.authService.emitIsConnected();
           this.router.navigate(['Home']);

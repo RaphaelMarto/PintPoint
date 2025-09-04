@@ -8,7 +8,6 @@ import { UsersRatingListComponent } from './users-rating-list/users-rating-list.
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ParameterComponent } from './parameter/parameter.component';
 import { PasswordResetComponent } from './parameter/components/security/components/password-reset/password-reset.component';
-import { authGuard } from '../guard/auth.guard';
 import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
 import { PutBeerComponent } from './beer-details/components/put-beer/put-beer.component';
 
@@ -36,7 +35,6 @@ const routes: Routes = [
   {
     path: 'Profil/PasswordReset',
     component: PasswordResetComponent,
-    canActivate: [authGuard],
   },
   {
     path: 'Profil/:nickname',

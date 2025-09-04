@@ -8,7 +8,6 @@ import { config } from '../../config/configuration';
 import { checkExist } from '../../interface/iCheckExist';
 import { ResMessage } from '../../interface/IResMessage';
 import { Router } from '@angular/router';
-import { RefreshToken } from '../../interface/iRefreshToken';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +23,7 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('isconnected') ?? 'false');
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   isShownedSubject: Subject<boolean> = new Subject<boolean>();
   isConnectedSubject: Subject<boolean> = new Subject<boolean>();
@@ -52,8 +51,6 @@ export class AuthService {
       .pipe(
         tap((response) => {
           localStorage.setItem('isconnected', JSON.stringify(true));
-          localStorage.setItem('token', response.accessToken);
-          localStorage.setItem('refreshToken', response.refreshToken);
           localStorage.setItem('nickname', response.nickname);
           this.emitIsConnected();
         }),
@@ -67,6 +64,12 @@ export class AuthService {
 
   logout(): void {
     localStorage.clear();
+    this.http.get(config.API_URL + 'Auth/Disconnect').subscribe({
+      next: () => { },
+      error: (err) => {
+        console.error('Logout error:', err);
+      },
+    });
     this.emitIsConnected();
     this.router.navigate(['Home']);
   }
@@ -76,12 +79,9 @@ export class AuthService {
     return Math.floor(new Date().getTime() / 1000) >= expiry;
   }
 
-  refreshToken(): Observable<RefreshToken> {
-    const refreshToken = localStorage.getItem('refreshToken') ?? '';
-    const token = localStorage.getItem('token') ?? '';
-    return this.http.post<RefreshToken>(
-      config.API_URL + 'Auth/Refresh',
-      { refreshToken: refreshToken, accessToken: token }
+  refreshToken() {
+    return this.http.get(
+      config.API_URL + 'Auth/Refresh'
     );
   }
 
@@ -95,10 +95,10 @@ export class AuthService {
   checkExist(email: string, nickName: string): Observable<checkExist> {
     return this.http.get<checkExist>(
       config.API_URL +
-        'Auth/CheckExist?nickName=' +
-        nickName +
-        '&email=' +
-        email
+      'Auth/CheckExist?nickName=' +
+      nickName +
+      '&email=' +
+      email
     );
   }
 
@@ -110,7 +110,7 @@ export class AuthService {
     return this.http.delete<ResMessage>(config.API_URL + 'Auth/DeleteUser');
   }
 
-  verifyEmail(code: string, id : number): Observable<ResMessage> {
+  verifyEmail(code: string, id: number): Observable<ResMessage> {
     return this.http.post<ResMessage>(
       config.API_URL + 'Auth/VerifyEmail',
       {
@@ -123,7 +123,7 @@ export class AuthService {
     return this.http.get<ResMessage>(config.API_URL + 'Auth/GetPasswordCode?email=' + email);
   }
 
-  updatePasswordByCode(code: string, newPassword: string, id : number): Observable<ResMessage> {
+  updatePasswordByCode(code: string, newPassword: string, id: number): Observable<ResMessage> {
     return this.http.put<ResMessage>(
       config.API_URL + 'Auth/UpdatePasswordByCode',
       {
